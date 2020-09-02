@@ -113,9 +113,14 @@
     <link rel='stylesheet' id='wen-logo-slider-slick-theme-css' href='http://colegiodeobstetras.pe/wp-content/plugins/wen-logo-slider/vendors/slick-carousel/slick-theme.css?ver=1.3.2' type='text/css' media='all' />
     <link rel='stylesheet' id='wen-logo-slider-css' href='http://colegiodeobstetras.pe/wp-content/plugins/wen-logo-slider/public/css/wen-logo-slider-public.css?ver=2.0.6' type='text/css' media='all' />
     <link rel='stylesheet' id='wp-show-posts-css' href='http://colegiodeobstetras.pe/wp-content/plugins/wp-show-posts/css/wp-show-posts-min.css?ver=1.1.3' type='text/css' media='all' />
+
+
+
     <link rel='stylesheet' id='hunted-fonts-css' href='//fonts.googleapis.com/css?family=Montserrat%3A300%2C300i%2C400%2C400i%2C700%2C700i%7CRoboto%3A300%2C300i%2C400%2C400i%2C700%2C700i' type='text/css' media='all' />
     <link rel='stylesheet' id='normalize-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/css/normalize.css?ver=5.3.4' type='text/css' media='all' />
-    <link rel='stylesheet' id='hunted-style-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/style.css?ver=5.3.4' type='text/css' media='all' />
+    <!--     <link rel='stylesheet' id='hunted-style-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/style.css?ver=5.3.4' type='text/css' media='all' /> -->
+
+
     <link rel='stylesheet' id='font-awesome-css' href='http://colegiodeobstetras.pe/wp-content/plugins/js_composer/assets/lib/bower/font-awesome/css/font-awesome.min.css?ver=6.0.2' type='text/css' media='all' />
     <link rel='stylesheet' id='bxslider-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/css/jquery.bxslider.css?ver=5.3.4' type='text/css' media='all' />
     <link rel='stylesheet' id='hunted-responsive-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/css/responsive.css?ver=5.3.4' type='text/css' media='all' />
@@ -146,11 +151,7 @@
             color: #555;
         }
 
-        table,
-        th,
-        td {
-            border-color: #c6b100;
-        }
+
 
         blockquote,
         pre {
@@ -1045,10 +1046,10 @@
             color: #ffffff;
         }
 
-        .wp-block-table td,
+        /*         .wp-block-table td,
         .wp-block-separator {
             border-color: #ffffff;
-        }
+        } */
 
         .wp-block-media-text {
             color: #000;
@@ -1071,7 +1072,7 @@
 <![endif]-->
     <link rel='stylesheet' id='js_composer_front-css' href='http://colegiodeobstetras.pe/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=6.0.2' type='text/css' media='all' />
     <link rel='stylesheet' id='bfa-font-awesome-css' href='//cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='gg_fontawesome-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/css/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+    <!--     <link rel='stylesheet' id='gg_fontawesome-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/css/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' /> -->
     <link rel='stylesheet' id='gg-frontend-css-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/css/frontend.min.css?ver=6.531' type='text/css' media='all' />
     <link rel='stylesheet' id='gg-slider-css-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/js/jquery.galleria/themes/ggallery/galleria.ggallery_minimal.css?ver=6.531' type='text/css' media='all' />
     <link rel='stylesheet' id='gg-custom-css-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/css/custom.css?ver=6.531' type='text/css' media='all' />
@@ -1336,7 +1337,7 @@
                         <a href="http://colegiodeobstetras.pe/"><img alt="theme-logo-alt" src="http://colegiodeobstetras.pe/wp-content/uploads/logo_blanco_obstetras_iam_gif.gif" /></a>
                     </header>
                 </div>
-
+                <!-- 
                 <div class="site-top-container clearfix">
 
                     <div class="site-logo-left-handler"></div>
@@ -1451,7 +1452,7 @@
                             <div class="top-extra-inner clearfix"></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
             </div>
@@ -1478,6 +1479,8 @@
                                 <li id="menu-item-9022" class="menu-item menu-item-type-gs_sim menu-item-object-gs_sim menu-item-9022"><a href="https://www.instagram.com/deobstetrasperu" target="_blank" rel="noopener noreferrer"><i class="fa fa-instagram fa- "></i> @deobstetrasperu</a></li>
                                 <li class="nav-sep"></li>
                                 <li id="menu-item-6402" class="menu-item menu-item-type-gs_sim menu-item-object-gs_sim menu-item-6402"><a href="https://www.youtube.com/channel/UCDXo--v_p3lC4kfqInTSnmg" target="_blank" rel="noopener noreferrer"><i class="fa fa-youtube fa- "></i> COP</a></li>
+                                <li class="nav-sep"></li>
+                                <li id="menu-item-6402" class="menu-item menu-item-type-gs_sim menu-item-object-gs_sim menu-item-6402"><a href="login" target="_blank" rel="noopener noreferrer"><i class="fa fa-graduation-cap"></i>INTRANET</a></li>
                                 <li class="nav-sep"></li>
                             </ul>
                         </div>
@@ -1521,7 +1524,7 @@
 
                                         <div class="fea-img-container"></div>
                                         <div class="header-area">
-                                            <h1 class="header-area-title hunted-font-1 fw700 mt40">Buscar</h1>
+                                            <h1 class="header-area-title hunted-font-1 fw700 mt40">CONOCE A TU OBSTETRA</h1>
                                         </div>
                                         <div class="hunted-sep"></div>
 
@@ -1534,57 +1537,102 @@
                                                                 <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
 
 
-                                                                <form class="form-inline" method="POST" action="">
 
-                                                                    <label>Fecha Desde:</label>
 
-                                                                    <input type="date" class="form-control" placeholder="Start" name="fechaI" />
+                                                                <div class="content">
 
-                                                                    <label>Hasta</label>
+                                                                    <div class="row">
 
-                                                                    <input type="date" class="form-control" placeholder="End" name="fechaFinal" value="<?php echo date("Y-m-d"); ?>" />
+                                                                        <div class="container">
 
-                                                                    <button class="btn btn-primary" name="search">
+                                                                            <form class="form-inline" method="POST" action="">
 
-                                                                        <span class="glyphicon glyphicon-search"></span>
+                                                                                <div class="form-group col-md-3">
 
-                                                                    </button>
+                                                                                    <div class="input-group">
 
-                                                                    <a href="consulta" type="button" class="btn btn-success">
+                                                                                        <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
 
-                                                                        <span class="glyphicon glyphicon-refresh"></span>
+                                                                                        <input type="text" class="form-control input-lx nuevoNombre" name="nuev_num_colegiatura" placeholder="N° de Colegiatura">
 
-                                                                    </a>
+                                                                                    </div>
 
-                                                                </form>
+
+                                                                                </div>
+
+
+                                                                                <div class="form-group col-md-3">
+
+                                                                                    <div class="input-group">
+
+                                                                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                                                                        <input type="text" class="form-control input-lx" name="nuevApellido_paterno" placeholder="Apellido Paterno">
+
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="form-group col-md-3">
+
+                                                                                    <div class="input-group">
+
+                                                                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                                                                        <input type="text" class="form-control input-lx" name="nuevApellido_materno" placeholder="Apellido Materno">
+
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="form-group col-md-3">
+
+                                                                                    <div class="input-group">
+
+                                                                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                                                                        <input type="text" class="form-control input-lx" name="nuevNombre" placeholder="Nombre">
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <br>
+                                                                                <br>
+                                                                                <br>
+                                                                                <!--                                                                                 <div style="text-align:center;">
+                                                                                    <button style="top:50%;left:50%;background-color: #81172d;" class="btn btn-danger btn-lg" type="button" name="consultaobstetra">
+                                                                                        <span class="glyphicon glyphicon-search">BUSCAR</span>
+                                                                                    </button>
+                                                                                </div> -->
+                                                                                <button class="btn btn-primary" name="consultaobstetra">
+
+                                                                                    <span class="glyphicon glyphicon-search"></span>
+
+                                                                                </button>
+
+                                                                            </form>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
 
                                                                 <div class="box-body" id="resultados">
 
                                                                     <br>
+
                                                                     <table class="table table-bordered table-striped dt-responsive tablas tablaActualizar" width="100%">
 
                                                                         <thead>
 
                                                                             <tr>
-
                                                                                 <th style="width:10px">#</th>
+                                                                                <th>VER</th>
+                                                                                <th>NOMBRE Y APELLIDOS</th>
 
-                                                                                <th>Tipo Doc.</th>
-                                                                                <th>N° Doc Visitante</th>
-                                                                                <th>Nombre Visitante</th>
-                                                                                <th>Cargo de Visitante</th>
-                                                                                <th>Entidad Visitante</th>
-                                                                                <th>Movito</th>
-                                                                                <th>Funcionario</th>
-                                                                                <th>Area/Oficina</th>
-                                                                                <th>Cargo</th>
-                                                                                <th>Fecha de Ingreso</th>
-                                                                                <th>Hora de Ingreso</th>
-                                                                                <th>Fecha de Salida</th>
-                                                                                <th>Hora de Salida</th>
-                                                                                <th>Digitador</th>
-
+                                                                                <th>REGION DE ADSCRIPCION</th>
+                                                                                <th>ESTADO</th>
+                                                                                <th>POSTGRADOS</th>
                                                                             </tr>
 
                                                                         </thead>
@@ -1592,44 +1640,50 @@
                                                                         <tbody>
                                                                             <?php
 
-                                                                            if (isset($_POST['search'])) {
+                                                                            if (isset($_POST['consultaobstetra'])) {
+                                                                                
+                                                                               
+                                                                                $valor1 = $_POST["nuev_num_colegiatura"];
+                                                                                $valor2 = $_POST["nuevApellido_paterno"];
+                                                                                $valor3 = $_POST["nuevApellido_materno"];
+                                                                                $valor4 = $_POST["nuevNombre"];
 
 
-                                                                                $d1 = DateTime::createFromFormat('Y-m-d', $_POST["fechaI"]);
-                                                                                $d2 = DateTime::createFromFormat('Y-m-d', $_POST["fechaFinal"]);
+                                                                                
+                                                                                    $item1 = "cop";
+                                                                                    $item2 = "apellido_paterno";
+                                                                                    $item3 = "apellido_materno";
+                                                                                    $item4 = "nombre";
 
-                                                                                $fechaInicial = $d1->format('d/m/Y');
-                                                                                $fechaFinal = $d2->format('d/m/Y');
+                                                                                    /* var_dump($valor1,$valor2,$valor3,$valor4); */
+                                                                                    $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1,$item2, $valor2,$item3, $valor3,$item4, $valor4);
+                                                                                    /* var_dump($registro); */
+                                                                                    foreach ($registro as $key => $value) {
 
+                                                                                        echo ' <tr>
+                                                                                                                <td>' . ($key + 1) . '</td>
+                                                                                                                <td>
 
-                                                                                $usuarios = ControladorRegistro::ctrRangoFechasRegistro($fechaInicial, $fechaFinal);
+                                                                                                                    <div class="btn-group">
+                                                                                                                    
+                                                                                                                        <button class="btn btn-warning btnEditarUsuario" idRegistro="' . $value["cop"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-eye"></i></button>
 
-                                                                                foreach ($usuarios as $key => $value) {
+                                                                                                                    </div>  
+                                                                            
+                                                                                                                </td>
 
-                                                                                    echo ' <tr>
-                                                                                    <td>' . ($key + 1) . '</td>
-                                                                                    <td class="text-center"><button class="btn btn-primary btn-xm">' . $value["TipoDocF"] . '</button></td>
-                                                                                    <td><button class="btn btn-warning btn-xm">' . $value["num_documento"] . '</button></td>
-                                                                                    <td>' . $value["nombre"] . '</td>
-                                                                                    <td>' . $value["cargo"] . '</td>
-                                                                                    <td>' . $value["ent_funcionario"] . '</td>
-                                                                                    <td>' . $value["motivo"] . '</td>
-                                                                                    <td>' . $value["servidor_publico"] . '</td>
-                                                                                    <td>' . $value["area_oficina_sp"] . '</td>
-                                                                                    <td>' . $value["cargo"] . '</td>
-                                                                                    <td>' . $value["fecha_ingreso"] . '</td>
-                                                                                    <td>' . $value["hora_ingreso"] . '</td>
-                                                                                    <td>' . $value["fecha_salida"] . '</td>
-                                                                                    <td>' . $value["hora_salida"] . '</td>
-                                                                                    <td>' . $value["usuario"] . '</td>
-
-
-                                                                                </tr>';
-                                                                                }
+                                                                                                                
+                                                                                                            
+                                                                                                                <td>' . $value["datos_completos"] . '</td>
+                                                                                                                
+                                                                                                                <td>' . $value["colegio_regional"] . '</td>
+                                                                                                                <td>' . $value["estado"] . '</td>
+                                                                                                                <td>' . $value["post_grado"] . '</td>
+                                                                                                
+                                                                                                </tr>';
+                                                                                    }
+                                                                                
                                                                             } else {
-
-                                                                                $fechaInicial = null;
-                                                                                $fechaFinal = null;
                                                                             }
 
                                                                             ?>

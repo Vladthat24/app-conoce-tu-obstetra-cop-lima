@@ -3,6 +3,21 @@
 class ControladorRegistro
 {
 
+  	/*=============================================
+	MOSTRAR DATOS CON LA CONSULTA
+	=============================================*/	
+
+	static public function ctrMostrarConsulta($item1, $valor1,$item2, $valor2,$item3, $valor3,$item4, $valor4){
+
+		$tabla = "registro";
+    $item=null;
+		$respuesta = ModeloRegistro::mdlMostrarConsulta($tabla,$item, $item1, $valor1,$item2, $valor2,$item3, $valor3,$item4, $valor4);
+
+		return $respuesta;
+		
+	}
+
+
 	/*=============================================
 	RANGO FECHAS
 	=============================================*/	
@@ -29,7 +44,7 @@ class ControladorRegistro
   static public function ctrMostrarRegistro($item, $valor)
   {
 
-    $tabla = "Tap_RegistroVisita";
+    $tabla = "registro";
 
     $respuesta = ModeloRegistro::mdlMostrarRegistro($tabla, $item, $valor);
 

@@ -58,23 +58,15 @@
 
                             <th style="width:10px">#</th>
                             <th>ACCIONES</th>
-                            <th>Tipo Doc.</th>
-                            <th>N° Doc Visitante</th>
-                            <th>Nombre Visitante</th>
-                            <th>Cargo de Visitante</th>
-                            <th>Entidad Visitante</th>
-                            <th>Movito</th>
-                            <th>Funcionario</th>
-                            <th>Area/Oficina</th>
-                            <th>Cargo</th>
-                            <th>Fecha de Ingreso</th>
-                            <th>Hora de Ingreso</th>
-                            <th>Fecha de Salida</th>
-                            <th>Hora de Salida</th>
-                            <th>Digitador</th>
+                            <th>COP</th>
+                            <th>DATOS COMPLETOS</th>
+                            <th>COLEGIOS REGIONAL</th>
+                            <th>ESTADO</th>
+                            <th>POST GRADO</th>
+                            <th>IMAGEN</th>
 
                         </tr>
-
+                        
                     </thead>
 
 

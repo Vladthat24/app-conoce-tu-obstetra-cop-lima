@@ -19,7 +19,7 @@ class TablaRegistro
 
     $item = null;
     $valor = null;
-    
+
     $registro = ControladorRegistro::ctrMostrarRegistro($item, $valor);
 
     if (count($registro) == 0) {
@@ -38,28 +38,18 @@ class TablaRegistro
        TRAEMOS LAS ACCIONES
        ============================================= */
 
-      $botones = "<div class='btn-group'><button class='btn btn-info btnImprimirRegistro' idRegistro='" . $registro[$i]["id"] . "'><i class='fa fa-print'></i></button><button class='btn btn-warning btnEditarRegistro' idRegistro='" . $registro[$i]["id"] . "' data-toggle='modal' data-target='#modalEditarRegistro'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarRegistro' idRegistro='" . $registro[$i]["id"] . "'><i class='fa fa-times'></i></button></div>";
+      $imagen = "<a href='" . $registro[$i]["imagen"] . "' onclick='windows.open()'><img src='" . $registro[$i]["imagen"] . "' width='40px'></a>";
+      $botones = "<div class='btn-group'><button class='btn btn-info btnImprimirRegistro' idRegistro='" . $registro[$i]["cop"] . "'><i class='fa fa-print'></i></button><button class='btn btn-warning btnEditarRegistro' idRegistro='" . $registro[$i]["cop"] . "' data-toggle='modal' data-target='#modalEditarRegistro'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarRegistro' idRegistro='" . $registro[$i]["cop"] . "'><i class='fa fa-times'></i></button></div>";
 
       $datosJson .= '[
-			      "' . ($i + 1) . '",
-                              "' . $botones . '",                               
-                              
-                              "' . $registro[$i]["TipoDocF"] . '",
-                              "' . $registro[$i]["num_documento"] . '",
-                              "' . $registro[$i]["nombre"] . '",
-                              "' . $registro[$i]["cargo"] . '",
-                              "' . $registro[$i]["ent_funcionario"] . '",
-                              "' . $registro[$i]["motivo"] . '",
-                              "' . $registro[$i]["servidor_publico"] . '",
-                              "' . $registro[$i]["area_oficina_sp"] . '",
-                              "' . $registro[$i]["cargo"] . '",
-                              "' . $registro[$i]["fecha_ingreso"] . '",
-                              "' . $registro[$i]["hora_ingreso"] . '",
-                              "' . $registro[$i]["fecha_salida"] . '",
-                              "' . $registro[$i]["hora_salida"] . '",
-                              "' . $registro[$i]["usuario"] . '"
-                             
-
+			                        "' . ($i + 1) . '",
+                              "' . $botones . '",                                                            
+                              "' . $registro[$i]["cop"] . '",
+                              "' . $registro[$i]["datos_completos"] . '",
+                              "' . $registro[$i]["colegio_regional"] . '",
+                              "' . $registro[$i]["estado"] . '",
+                              "' . $registro[$i]["post_grado"] . '",
+                              "' . $imagen . '"
 			    ],';
     }
 

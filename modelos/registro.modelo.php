@@ -2,11 +2,58 @@
 
 require_once "conexion.php";
 
+
+/* =============================================
+      MOSTRAR CONSULTA DE LA PAGINA DE CONSULTA.PHP
+      ============================================= */
 class ModeloRegistro
 {
+    static public function mdlMostrarConsulta($tabla, $item, $item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4)
+    {
+        //CAPTURAR DATOS PARA EL EDIT EN EL FORMULARIO
+        if ($item != null) {
+
+
+/*             $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item1 LIKE ':$item1%'
+            OR $item2 LIKE ':$item2%'
+            OR $item3 LIKE ':$item3%'
+            OR $item4 LIKE ':$item4%'");
+
+            $stmt->bindParam(":" . $item1, $valor1, PDO::PARAM_INT);
+            $stmt->bindParam(":" . $item2, $valor2, PDO::PARAM_STR);
+            $stmt->bindParam(":" . $item3, $valor3, PDO::PARAM_STR);
+            $stmt->bindParam(":" . $item4, $valor4, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll(); */
+
+             
+        } else{
+
+            $stmt = Conexion::conectar()->prepare("SELECT cop,
+            datos_completos,colegio_regional,
+            estado,post_grado FROM $tabla WHERE $item1=:$item1 OR $item2=:$item2 OR $item3=:$item3 OR $item4=:$item4");
+
+            $stmt->bindParam(":" . $item1, $valor1, PDO::PARAM_INT);
+            $stmt->bindParam(":" . $item2, $valor2, PDO::PARAM_STR);
+            $stmt->bindParam(":" . $item3, $valor3, PDO::PARAM_STR);
+            $stmt->bindParam(":" . $item4, $valor4, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+
+        $stmt->close();
+
+        $stmt = null;
+    }
+
     /* =============================================
       MOSTRAR RANGOS DE FECHA
       ============================================= */
+
     static public function mdlRangoFechasRegistro($tabla, $fechaInicial, $fechaFinal)
     {
 
@@ -34,7 +81,6 @@ class ModeloRegistro
             $stmt->execute();
 
             return $stmt->fetchAll();
-
         } else if ($fechaInicial == $fechaFinal) {
 
             $stmt = Conexion::conectar()->prepare("SELECT Tap_RegistroVisita.id as id,
@@ -62,10 +108,9 @@ class ModeloRegistro
             $stmt->execute();
 
             return $stmt->fetchAll();
-
         } else {
 
-				$stmt = Conexion::conectar()->prepare("SELECT Tap_RegistroVisita.id as id,
+            $stmt = Conexion::conectar()->prepare("SELECT Tap_RegistroVisita.id as id,
                 (SELECT tipo_documento FROM Tap_TipoDocumento WHERE id=Tap_Funcionario.idtipo_documento) as TipoDocF,    
                 Tap_Funcionario.num_documento as num_documento,
                 Tap_Funcionario.nombre as nombre,
@@ -109,24 +154,10 @@ class ModeloRegistro
             return $stmt->fetch();
         } else {
 
-            $stmt = Conexion::conectar()->prepare("SELECT Tap_RegistroVisita.id as id,
-            (SELECT tipo_documento FROM Tap_TipoDocumento WHERE id=Tap_Funcionario.idtipo_documento) as TipoDocF,    
-            Tap_Funcionario.num_documento as num_documento,
-            Tap_Funcionario.nombre as nombre,
-            Tap_Funcionario.cargo as cargo,
-            (SELECT entidad FROM Tap_Entidad WHERE id=Tap_Funcionario.identidad) as ent_funcionario,
-            Tap_RegistroVisita.motivo as motivo,
-            Tap_RegistroVisita.servidor_publico as servidor_publico,
-            Tap_RegistroVisita.area_oficina_sp as area_oficina_sp,
-            Tap_RegistroVisita.cargo as cargo,
-            FORMAT(CONVERT(date,Tap_RegistroVisita.fecha_ingreso),'dd/MM/yyyy') as fecha_ingreso,
-			CONVERT(varchar(25), CAST(Tap_RegistroVisita.hora_ingreso as TIME),100) as hora_ingreso,
-            FORMAT(Tap_RegistroVisita.fecha_salida,'dd/MM/yyyy') as fecha_salida,
-            Tap_RegistroVisita.hora_salida as hora_salida,
-            Tap_RegistroVisita.usuario as usuario  
-            FROM $tabla left join Tap_Funcionario  on 
-            Tap_RegistroVisita.idfuncionario=Tap_Funcionario.id 
-            ORDER BY Tap_RegistroVisita.id DESC");
+            $stmt = Conexion::conectar()->prepare("SELECT cop,apellido_paterno,apellido_materno,
+            nombre,datos_completos,colegio_regional,estado,
+            post_grado,imagen,fecha FROM $tabla
+            ORDER BY cop DESC");
 
             $stmt->execute();
 

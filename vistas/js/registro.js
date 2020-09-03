@@ -4,29 +4,29 @@ LLAMAR AL DNI QUE ESTA ALMACENADO EN EL LOCALSTRORE
  =============================================*/
 $(document).ready(function () {
 
-
+/* 
     var dni = localStorage.getItem("dniLocalStore");
     $("#nuevDniVisitaFuncionario").val(dni);
 
-    $("#nuevEntidadSelectSearch").select2();
+    $("#nuevEntidadSelectSearch").select2(); */
 
 })
 /*=============================================
 ALMACENAR EL DNI EN EL LOCALSTRORE
  =============================================*/
-$("#crearFuncionarioVisita").on("click", function () {
+/* $("#crearFuncionarioVisita").on("click", function () {
 
     var dniLocalStore = $(".dniLocalStore").val();
 
     localStorage.setItem("dniLocalStore", dniLocalStore);
 
-})
+}) */
 
 
 /*=============================================
 ELIMINAR DNI EN EL LOCALSTRORE
  =============================================*/
-$("#limpiarFuncionario").on("click", function () {
+/* $("#limpiarFuncionario").on("click", function () {
 
     localStorage.removeItem("dniLocalStore");
 
@@ -36,49 +36,49 @@ $("#limpiarFuncionario").on("click", function () {
     $("#nuevCargoFuncionario").val("");
     $("#nuevEntidadFuncionario").val("");
 
-})
+}) */
 /*=============================================
  CARGAR MODAL DE FUNCIONARIO 
  =============================================*/
-$("#agregarFuncionario").on("click", function () {
+/* $("#agregarFuncionario").on("click", function () {
 
-    $('#modalAgregarRegistro').modal('show');
+    $('#modalAgregarRegistro').modal('show'); */
 
-    var dni = localStorage.getItem("dniLocalStore");
-    $("#nuevDniVisitaFuncionario").val(dni);
+/*     var dni = localStorage.getItem("dniLocalStore");
+    $("#nuevDniVisitaFuncionario").val(dni); */
 
 
 
-})
+/* }) */
 
-$("#crearFuncionario").on("click", function () {
+/* $("#crearFuncionario").on("click", function () {
     $('#modalAgregarFuncionarioVisita').modal('show');
-})
+}) */
 
-$("#agregarEntidades").on("click", function () {
+/* $("#agregarEntidades").on("click", function () {
     $('#modalAgregarEntidadVisita').modal('show');
 })
-
+ */
 /*=============================================
  CARGAR HORA DE DATETIMEPICKER
  =============================================*/
-$(function () {
+/* $(function () {
     $('#datetimepicker3').datetimepicker({
         format: 'LT'
     });
-});
+}); */
 
 /*=============================================
  ACTUALIZAR PAGINA 
  =============================================*/
-$("#actualizar").click(function () {
+/* $("#actualizar").click(function () {
     window.location = "registro";
-})
+}) */
 /*=============================================
  VALIDAR FUNCIONARIO SI EXISTE
  =============================================*/
 
-$("#buscarFuncionario").click(function () {
+/* $("#buscarFuncionario").click(function () {
 
     var funcionario = $("#nuevDniVisitaFuncionario").val();
     console.log("funcionario", funcionario);
@@ -154,7 +154,7 @@ $("#buscarFuncionario").click(function () {
 
     })
 })
-
+ */
 /*=============================================
  CARGAR LA TABLA DINÁMICA DE REGISTRO
  =============================================*/
@@ -200,7 +200,7 @@ function actualizarActivo() {
 /*=============================================
  CAPTURANDO LA CATEGORIA PARA ASIGNAR CÓDIGO - NUEVA
  =============================================*/
-$("#nuevaCategoria").change(function () {
+/* $("#nuevaCategoria").change(function () {
 
 
     var idCategoria = $(this).val();
@@ -235,13 +235,13 @@ $("#nuevaCategoria").change(function () {
 
     })
 
-})
+}) */
 
 
 /*=============================================
  REVISAR SI EL USUARIO YA ESTÁ REGISTRADO
  =============================================*/
-$("#nuevoNombrePaciente").change(function () {
+/* $("#nuevoNombrePaciente").change(function () {
 
 
     $(".alert").remove();
@@ -272,10 +272,10 @@ $("#nuevoNombrePaciente").change(function () {
         }
 
     })
-});
+}); */
 
 
-
+/* 
 $("#dniPaciente").change(function () {
     //$('#consultar').on('click', function () {
 
@@ -320,12 +320,12 @@ $("#dniPaciente").change(function () {
 
     })
 });
-
+ */
 
 /*=============================================
  CAPTURANDO LA CATEGORIA PARA ASIGNAR CÓDIGO - EDITAR
  =============================================*/
-$("#editarCategoria").change(function () {
+/* $("#editarCategoria").change(function () {
 
     var idCategoria = $(this).val();
 
@@ -359,14 +359,14 @@ $("#editarCategoria").change(function () {
 
     })
 
-})
+}) */
 
 
 
 /*================================
  //REMOVER EL ID DEL COMBO
  ===================================*/
-$("#editarCatg").on("click", function () {
+/* $("#editarCatg").on("click", function () {
 
     $("#editarCategoria").remove();
 })
@@ -379,7 +379,7 @@ $('#editarFechaSalida').change(function () {
 $('#editarHoraSalida').change(function () {
     var valor1 = $(this).val();
     console.log(valor1);
-})
+}) */
 
 /*=============================================
  EDITAR REGISTRO
@@ -484,6 +484,57 @@ $(".tablaRegistro tbody").on("click", "button.btnEditarRegistro", function () {
 
 
 /*=============================================
+ SUBIENDO LA FOTO DEL TICKET
+ =============================================*/
+
+$(".nuevaImagen").change(function () {
+
+    var imagen = this.files[0];
+
+    /*=============================================
+     VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+     =============================================*/
+
+    if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
+
+        $(".nuevaImagen").val("");
+
+        swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen debe estar en formato JPG o PNG!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+        });
+
+    } else if (imagen["size"] > 2000000) {
+
+        $(".nuevaImagen").val("");
+
+        swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen no debe pesar más de 2MB!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+        });
+
+    } else {
+
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
+
+        $(datosImagen).on("load", function (event) {
+
+            var rutaImagen = event.target.result;
+
+            $(".previsualizar").attr("src", rutaImagen);
+
+        })
+
+    }
+})
+
+
+/*=============================================
  ELIMINAR TICKET
  =============================================*/
 
@@ -529,16 +580,16 @@ $(".tablaTicket").on("click", ".btnImprimirTicket", function () {
 /*=============================================
 MODAL PARA CREAR FUNCIONARIO DENTRO DEL MODAL DE REGISTRO
  =============================================*/
-
+/* 
 $("#listarFuncionario").on("click", function () {
     $('#modalListarFuncionario').modal('show');
-})
+}) */
 
 /*=============================================
 SELECCIONAR FUNCIONARIO DE LISTA
  =============================================*/
 
-$(".tablasListado tbody").on("click", "button.listarFuncionario", function () {
+/* $(".tablasListado tbody").on("click", "button.listarFuncionario", function () {
 
 
     var idFuncionario = $(this).attr("idFuncionarioLista");
@@ -611,6 +662,6 @@ $(".tablasListado tbody").on("click", "button.listarFuncionario", function () {
         }
 
     })
-})
+}) */
 
 

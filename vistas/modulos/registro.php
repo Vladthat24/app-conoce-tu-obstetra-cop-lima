@@ -24,25 +24,14 @@
 
             <div class="box-header with-border">
 
-                <button class="btn btn-primary" data-toggle="modal" id="agregarFuncionario">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarColegiado">
 
-                    Agregar Visita
+                    Agregar Colegiado
 
                 </button>
 
-                <button class="btn btn-primary" id="actualizar"><img src="vistas/img/plantilla/android-o-iconos-adaptivos.gif" width="30px" /><strong> Actualizar Registros</strong></button>
-                <?php
+                <button class="btn btn-primary" id="actualizar"><img src="vistas/img/plantilla/android-o-iconos-adaptivos.gif" width="30px" /></button>
 
-                if (isset($_GET["fechaInicial"])) {
-                } else {
-
-                    echo '<a href="vistas/modulos/descargar-reporte.php?reporte=reporte">';
-                }
-
-                ?>
-
-                <button class="btn btn-success" style="margin-top:5px">Descargar reporte en Excel</button>
-                </a>
             </div>
 
 
@@ -64,9 +53,10 @@
                             <th>ESTADO</th>
                             <th>POST GRADO</th>
                             <th>IMAGEN</th>
+                            <th>DIGITADOR</th>
 
                         </tr>
-                        
+
                     </thead>
 
 
@@ -86,9 +76,9 @@
 MODAL AGREGAR VISITA
 ======================================-->
 
-<div id="modalAgregarRegistro" class="modal fade" role="dialog" style="overflow-y: scroll;">
+<div id="modalAgregarColegiado" class="modal fade" role="dialog" style="overflow-y: scroll;">
 
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
 
         <div class="modal-content">
 
@@ -102,7 +92,7 @@ MODAL AGREGAR VISITA
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                    <h4 class="modal-title">Agregar Visita</h4>
+                    <h4 class="modal-title">Agregar Colegiado </h4>
 
                 </div>
 
@@ -116,181 +106,132 @@ MODAL AGREGAR VISITA
 
                         <div class="row">
 
-                            <div class="col-lg-12">
+                            <!-- ENTRADA PARA NOMBRE FUNCIONARIO -->
+                            <div class="fron-row">
 
-                                <p class="help-block"><strong>FUNCIONARIO VISITANTE:</strong></p>
+                                <div class="form-group col-md-12">
 
-                                <!-- ENTRADA PARA SELECCIONAR CATEGORÍA DEL REGISTRO-->
-                                <div class="form-row">
+                                    <div class="input-group">
 
-                                    <div class="form-group col-md-12">
+                                        <span class="input-group-addon">Apellido Paterno:</span>
 
-                                        <div class="input-group">
+                                        <input type="text" class="form-control input-lx" name="nuevApellidoPaterno" placeholder="Apellido Paterno" required>
 
-                                            <span class="input-group-addon">Tipo Doc</span>
-
-                                            <input type="text" class="form-control input-lx" id="nuevTipoDocumento" name="nuevTipoDocumento" placeholder="Tipo de Documento" require readonly>
-
-                                        </div>
 
                                     </div>
-
-                                    <div class="form-group col-md-5">
-
-                                        <div class="input-group ">
-
-                                            <span class="input-group-addon">N° Doc:</span>
-
-                                            <input type="text" class="form-control input-lx" maxlength="15" id="nuevDniVisitaFuncionario" name="nuevDniVisitaFuncionario" placeholder="N° Doc Funcionario" required>
-
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-7">
-
-                                        <div class="input-group">
-
-                                            <button type="button" class="btn btn-primary" id="buscarFuncionario">BUSCAR</button>
-                                            <button type="button" class="btn btn-primary" id="crearFuncionario">CREAR</button>
-                                            <button type="button" class="btn btn-primary" id="limpiarFuncionario">LIMPIAR</button>
-
-
-                                        </div>
-
-                                    </div>
-
 
                                 </div>
+
                                 <!-- ENTRADA PARA NOMBRE FUNCIONARIO -->
-                                <div class="fron-row">
 
-                                    <div class="form-group col-md-12">
+                                <div class="form-group col-md-12">
 
-                                        <div class="input-group">
+                                    <div class="input-group">
 
-                                            <span class="input-group-addon">Nombre Funcionario:</span>
+                                        <span class="input-group-addon">Apellido Materno:</span>
 
-                                            <input type="text" class="form-control input-lx" id="nuevNombreFuncionario" name="nuevNombreFuncionario" placeholder="Nombre del Funcionario" readonly required>
-                                            <input class="hidden" type="text" id="nuevIdFuncionario" name="nuevIdFuncionario">
+                                        <input type="text" class="form-control input-lx" name="nuevaApellidoMaterno" placeholder="Apellido Materno" required>
+                                        <input type="text" class="form-control input-lx hidden" id="codigoUnicoReclamo" name="codigoUnicoReclamo" require>
+                                    </div>
 
-                                        </div>
+                                </div>
+
+                                <!-- ENTRADA PARA CARGO FUNCIONARIO -->
+
+                                <div class="form-group col-md-12">
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-addon">Nombre:</span>
+
+                                        <input type="text" class="form-control input-lx" name="nuevNombre" placeholder="Nombres" required>
 
                                     </div>
 
-                                    <!-- ENTRADA PARA NOMBRE FUNCIONARIO -->
+                                </div>
 
-                                    <div class="form-group col-md-12">
+                                <!-- ENTRADA PARA COLEGIO REGIONAL -->
 
-                                        <div class="input-group">
+                                <div class="form-group col-md-12">
 
-                                            <span class="input-group-addon">Cargo Funcionario:</span>
+                                    <div class="input-group">
 
-                                            <input type="text" class="form-control input-lx" id="nuevCargoFuncionario" name="nuevCargoFuncionario" placeholder="Cargo del Funcionario" readonly required>
+                                        <span class="input-group-addon">Colegio Regional:</span>
 
-                                        </div>
-
-                                    </div>
-
-                                    <!-- ENTRADA PARA CARGO FUNCIONARIO -->
-
-                                    <div class="form-group col-md-12">
-
-                                        <div class="input-group">
-
-                                            <span class="input-group-addon">Entidad:</span>
-
-                                            <input type="text" class="form-control input-lx" id="nuevEntidadFuncionario" name="nuevEntidadFuncionario" placeholder="Entidad del Funcionario" readonly required>
-
-                                        </div>
-
-                                    </div>
-
-                                    <!-- ENTRADA PARA USUARIO REGISTRADOR -->
-
-                                    <div class="form-group col-md-12">
-
-                                        <div class="input-group">
-
-                                            <span class="input-group-addon">Digitador:</span>
-
-                                            <input type="text" class="form-control input-lx" id="nuevUsuarioDigitador" name="nuevUsuarioDigitador" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
-
-                                        </div>
+                                        <input type="text" class="form-control input-lx" name="nuevColegioRegional" required>
 
                                     </div>
 
                                 </div>
 
 
-                                <p class="help-block"><strong>FUNCIONARIO DE LA ENTIDAD:</strong></p>
+                                <div class="form-group col-md-12">
 
-                                <!-- ENTRADA PARA NOMBRE FUNCIONARIO VISITADO-->
-                                <div class="fron-row">
+                                    <div class="input-group">
 
-                                    <div class="form-group col-md-12">
+                                        <span class="input-group-addon bord">Estado:</span>
 
-                                        <div class="input-group">
+                                        <select class="form-control input-lx" name="nuevEstado">
 
-                                            <span class="input-group-addon">Nombre Funcionario:</span>
+                                            <option value="Habilitado">Habilitado</option>
+                                            <option value="No Habilitado">No Habilitado</option>
 
-                                            <input type="text" class="form-control input-lx" name="nuevNombreFuncionarioLocal" placeholder="Nombre del Funcionario" required>
-
-
-                                        </div>
-
+                                        </select>
                                     </div>
 
 
-
-
-                                    <!-- ENTRADA PARA AREA O OFICINA FUNCIONARIO VISITADO-->
-
-                                    <div class="form-group col-md-12">
-
-                                        <div class="input-group">
-
-                                            <span class="input-group-addon">Cargo Funcionario:</span>
-
-                                            <input type="text" class="form-control input-lx" name="nuevAreaOfFuncionarioLocal" placeholder="Area o Oficina del Funcionario" required>
-
-                                        </div>
-
-                                    </div>
-
-                                    <!-- ENTRADA PARA CARGO EN FUNCIONARIO VISITADO -->
-
-                                    <div class="form-group col-md-12">
-
-                                        <div class="input-group">
-
-                                            <span class="input-group-addon">Entidad:</span>
-
-                                            <input type="text" class="form-control input-lx" name="nuevCargoFuncionarioLocal" placeholder="Cargo del Funcionario" required>
-
-                                        </div>
-
-                                    </div>
-
-
-
-                                    <p class="help-block"><strong>MOVITO DE LA VISITA:</strong></p>
-                                    <!-- ENTRADA PARA MOTIVO DE VISITA DEL FUNCIONARIO A LA ENTIDAD -->
-
-                                    <div class="form-group col-md-12">
-
-                                        <div class="input-group">
-
-                                            <span class="input-group-addon"></span>
-
-                                            <input type="text" class="form-control input-lx" name="nuevMotivo" placeholder="Motivo" required>
-
-                                        </div>
-
-                                    </div>
                                 </div>
 
-                            </div> <!-- FIN DEL LA COLUMNA DE FORMULARIO VISITANTE -->
+
+                                <div class="form-group col-md-12">
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-addon">Post Grado:</span>
+
+                                        <input type="text" class="form-control input-lx" name="nuevPostGrado" required>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- ENTRADA PARA USUARIO REGISTRADOR -->
+
+                                <div class="form-group col-md-12">
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-addon">Digitador:</span>
+
+                                        <input type="text" class="form-control input-lx" name="nuevUsuarioDigitador" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- ENTRADA PARA SUBIR FOTO -->
+
+                                <div class="form-group">
+
+                                    <div class="panel">Subir Foto</div>
+                                    <style>
+                                        input {
+                                            border-color: white;
+                                        }
+                                    </style>
+                                    <input type="file" class="nuevaImagen inputfile" name="nuevaImagen">
+
+
+                                    <p class="help-block">Peso máximo de la imagen 2MB</p>
+
+                                    <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+
+                                </div>
+
+
+
+                            </div>
+
 
                         </div>
                     </div>
@@ -304,7 +245,7 @@ MODAL AGREGAR VISITA
 
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-                    <button type="submit" class="btn btn-primary actualizar">Guardar Registro</button>
+                    <button type="submit" class="btn btn-primary">Guardar Registro</button>
 
                 </div>
 
@@ -312,108 +253,12 @@ MODAL AGREGAR VISITA
 
             <?php
 
-            $registroVisita = new ControladorRegistro();
-            $registroVisita->ctrCrearRegistro();
+            $registroColegiado = new ControladorRegistro();
+            $registroColegiado->ctrCrearRegistro();
 
 
             ?>
 
-        </div>
-        <!--=====================================
-                SUBVENTA DE LISTADO DE FUNCIONARIOS
-                ======================================-->
-
-        <div class="modal-content">
-
-
-
-            <!--=====================================
-                    CABEZA DEL MODAL
-                    ======================================-->
-
-            <div class="modal-header" style="background:#3c8dbc; color:white">
-
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                <h4 class="modal-title">LISTADO DE FUNCIONARIOS</h4>
-
-            </div>
-
-            <!--=====================================
-                 CUERPO DEL MODAL
-             ======================================-->
-
-            <div class="modal-body">
-
-                <div class="content">
-
-                    <div class="row">
-
-                        <div class="col-lg-12">
-
-
-                            <table class="table table-bordered table-striped dt-responsive tablas tablasListado" width="100%">
-
-                                <thead>
-
-                                    <tr>
-
-                                        <th style="width:10px">#</th>
-                                        <th>Acciones</th>
-                                        <th>Tipo Documento</th>
-                                        <th>N° Documento</th>
-                                        <th>Nombre</th>
-                                        <th>Entidad</th>
-                                        <th>Cargo</th>
-                                        <th>Fecha</th>
-                                    </tr>
-
-                                </thead>
-
-                                <tbody>
-
-                                    <?php
-
-                                    $item = null;
-                                    $valor = null;
-
-                                    $funcionario = ControladorFuncionario::ctrMostrarFuncionario($item, $valor);
-
-                                    foreach ($funcionario as $key => $value) {
-
-
-                                        echo ' <tr>                            
-
-                                                    <td>' . ($key + 1) . '</td>                       
-                                                        <td>
-
-                                                        <div class="btn-group">
-                                                            
-                                                            <button class="btn btn-warning  listarFuncionario" idFuncionarioLista="' . $value["id"] . '"><i class="fa fa-pencil"></i></button>
-
-                                                        </div>  
-
-                                                        </td>
-                                                    <td>' . $value["tipo_documento"] . '</td>
-                                                    <td>' . $value["num_documento"] . '</td>
-                                                    <td>' . $value["nombre"] . '</td>
-                                                    <td>' . $value["entidad"] . '</td>
-                                                    <td>' . $value["cargo"] . '</td>
-                                                    <td>' . $value["fecha_registro"] . '</td>
-                                                
-                                                </tr>';
-                                    }
-
-                                    ?>
-
-                                </tbody>
-
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
 
     </div>
@@ -678,190 +523,6 @@ MODAL EDITAR REGISTRO
     </div>
 
 </div>
-
-<!--=====================================
-MODAL AGREGAR FUNCIONARIO
-======================================-->
-
-<div id="modalAgregarFuncionarioVisita" class="modal fade" role="dialog">
-
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-
-            <form role="form" method="post" enctype="multipart/form-data">
-
-                <!--=====================================
-                CABEZA DEL MODAL
-                ======================================-->
-
-                <div class="modal-header" style="background:#3c8dbc; color:white">
-
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                    <h4 class="modal-title">Agregar Funcionario</h4>
-
-                </div>
-
-                <!--=====================================
-                CUERPO DEL MODAL
-                ======================================-->
-
-                <div class="modal-body">
-
-                    <div class="box-body">
-
-                        <div class="form-row">
-
-
-
-                            <!-- ENTRADA PARA SELECCIONAR DOCUMENTO DEL REGISTRO-->
-
-                            <div class="form-group col-md-12">
-
-                                <div class="input-group">
-
-                                    <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
-                                    <select class="form-control input-lx" id="nuevTipoDocumento" name="nuevTipoDocumento" required>
-
-                                        <option value="">Tipo de Documento</option>
-
-                                        <?php
-                                        $item = null;
-                                        $valor = null;
-
-                                        $documento = ControladorDocumento::ctrMostrarDocumento($item, $valor);
-
-                                        foreach ($documento as $key => $value) {
-
-                                            echo '<option value="' . $value["id"] . '">' . $value["tipo_documento"] . '</option>';
-                                        }
-                                        ?>
-
-                                    </select>
-
-
-                                </div>
-
-                            </div>
-
-                            <!-- ENTRADA PARA NUMERO DE DOCUMENTO (DNI) -->
-
-                            <div class="form-group col-md-12">
-
-                                <div class="input-group ">
-
-                                    <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
-
-                                    <input type="text" class="form-control input-lx dni validardni dniLocalStore" maxlength="15" id="dni" name="dni" placeholder="Documento de Identidad" required>
-
-
-                                    <span class="input-group-addon">
-                                        <button type="button" id="consultar" class="btn btn-primary btn-xs consultar">
-                                            Consultar
-                                        </button>
-                                    </span>
-
-                                </div>
-
-                            </div>
-                            <!-- ENTRADA PARA EL NOMBRE Y APELLIDO-->
-
-                            <div class="form-group col-md-12">
-
-                                <div class="input-group">
-
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-
-                                    <input type="text" class="form-control input-lx nuevoNombre" id="nuevNombre" name="nuevNombre" placeholder="Nombres y Apellidos" required>
-
-                                </div>
-
-
-                            </div>
-
-
-
-                            <!-- ENTRADA PARA CARGO -->
-                            <div class="form-group col-md-12">
-
-                                <div class="input-group">
-
-                                    <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-
-                                    <input type="text" class="form-control input-lx" name="nuevCargo" placeholder="Cargo" required>
-
-                                </div>
-
-                            </div>
-
-
-                            <!-- ENTRADA PARA SELECCIONAR ENTIDAD-->
-                            <div class="form-group col-md-12">
-
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-university"></i></span>
-
-
-                                    <select id="nuevEntidadSelectSearch" name="nuevEntidad">
-                                        <!-- id="nuevEntidadFun" -->
-                                        <option value="">BUSCAR ENTIDAD DEL FUNCIONARIO</option>
-
-                                        <?php
-                                        $item = null;
-                                        $valor = null;
-
-                                        $entidad = ControladorEntidad::ctrMostrarEntidad($item, $valor);
-
-                                        foreach ($entidad as $key => $value) {
-
-                                            echo '<option value="' . $value["id"] . '">' . $value["entidad"] . '</option>';
-                                        }
-                                        ?>
-
-                                    </select>
-
-                                    <!-- <span class="input-group-addon"><button type="button" class="btn btn-primary btn-xs" id="agregarEntidades">Agregar</button></span> -->
-
-
-                                </div>
-
-
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!--=====================================
-                PIE DEL MODAL
-                ======================================-->
-
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-
-                    <button type="submit" class="btn btn-primary" id="crearFuncionarioVisita">Guardar Funcionario</button>
-
-                </div>
-
-                <?php
-                $crearFuncionario = new ControladorFuncionario();
-                $crearFuncionario->ctrCrearFuncionarioVisita();
-                ?>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</div>
-
 
 <?php
 

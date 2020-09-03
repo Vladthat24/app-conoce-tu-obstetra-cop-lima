@@ -3,34 +3,34 @@
 class ControladorRegistro
 {
 
-  	/*=============================================
+  /*=============================================
 	MOSTRAR DATOS CON LA CONSULTA
-	=============================================*/	
+	=============================================*/
 
-	static public function ctrMostrarConsulta($item1, $valor1,$item2, $valor2,$item3, $valor3,$item4, $valor4){
+  static public function ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4)
+  {
 
-		$tabla = "registro";
-    $item=null;
-		$respuesta = ModeloRegistro::mdlMostrarConsulta($tabla,$item, $item1, $valor1,$item2, $valor2,$item3, $valor3,$item4, $valor4);
+    $tabla = "registro";
+    $item = null;
+    $respuesta = ModeloRegistro::mdlMostrarConsulta($tabla, $item, $item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
 
-		return $respuesta;
-		
-	}
+    return $respuesta;
+  }
 
 
-	/*=============================================
+  /*=============================================
 	RANGO FECHAS
-	=============================================*/	
+	=============================================*/
 
-	static public function ctrRangoFechasRegistro($fechaInicial, $fechaFinal){
+  static public function ctrRangoFechasRegistro($fechaInicial, $fechaFinal)
+  {
 
-		$tabla = "Tap_RegistroVisita";
+    $tabla = "Tap_RegistroVisita";
 
-		$respuesta = ModeloRegistro::mdlRangoFechasRegistro($tabla, $fechaInicial, $fechaFinal);
+    $respuesta = ModeloRegistro::mdlRangoFechasRegistro($tabla, $fechaInicial, $fechaFinal);
 
-		return $respuesta;
-		
-	}
+    return $respuesta;
+  }
 
 
 
@@ -58,34 +58,98 @@ class ControladorRegistro
   static public function ctrCrearRegistro()
   {
 
-    if (isset($_POST["nuevIdFuncionario"])) {
+    if (isset($_POST["nuevApellidoPaterno"])) {
 
-      if ($_POST["nuevIdFuncionario"]) {
+      if ($_POST["nuevApellidoPaterno"]) {
+
+        /* =============================================
+                   VALIDAR IMAGEN
+                   ============================================= */
+
+        $ruta = "vistas/img/productos/default/anonymous.png";
+
+        $nombreCarpeta = $_POST["nuevApellidoPaterno"] + " " + $_POST["nuevaApellidoMaterno"] + " " + $_POST["nuevNombre"];
+
+        if (isset($_FILES["nuevaImagen"]["tmp_name"])) {
+
+          list($ancho, $alto) = getimagesize($_FILES["nuevaImagen"]["tmp_name"]);
+
+          $nuevoAncho = 500;
+          $nuevoAlto = 500;
+
+          /* =============================================
+                       CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
+                       ============================================= */
+
+          $directorio = "vistas/img/productos/" . $nombreCarpeta;
+
+          mkdir($directorio, 0755);
+
+          /* =============================================
+                       DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+                       ============================================= */
+
+          if ($_FILES["nuevaImagen"]["type"] == "image/jpeg") {
+
+            /* =============================================
+                           GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+                           ============================================= */
+
+            $aleatorio = mt_rand(100, 999);
+
+            $ruta = "vistas/img/productos/" . $nombreCarpeta . "/" . $aleatorio . ".jpg";
+
+            $origen = imagecreatefromjpeg($_FILES["nuevaImagen"]["tmp_name"]);
+
+            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+            imagejpeg($destino, $ruta);
+          }
+
+          if ($_FILES["nuevaImagen"]["type"] == "image/png") {
+
+            /* =============================================
+                           GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+                           ============================================= */
+
+            $aleatorio = mt_rand(100, 999);
+
+            $ruta = "vistas/img/productos/" . $nombreCarpeta . "/" . $aleatorio . ".png";
+
+            $origen = imagecreatefrompng($_FILES["nuevaImagen"]["tmp_name"]);
+
+            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+            imagepng($destino, $ruta);
+          }
+        }
 
         date_default_timezone_set('America/Lima');
 
-        $fecha = date('d-m-Y');
-        $hora = date('H:i:s A');
+        $fecha = date('Y-m-d');
+        $hora = date('H:i:s');
 
-        /* $fechaActual = $fecha . ' ' . $hora; */
+        $fechaActual = $fecha . ' ' . $hora;
 
-        $tabla = "Tap_RegistroVisita";
-
-        var_dump($_POST["nuevFechaSalida"], $_POST["nuevHoraSalida"]);
-
+        $tabla = "registro";
+        var_dump($_POST["nuevApellidoPaterno"] + " " + $_POST["nuevaApellidoMaterno"] + " " + $_POST["nuevNombre"]);
         $datos = array(
+          "apellido_paterno" => $_POST["nuevApellidoPaterno"],
+          "apellido_materno" => $_POST["nuevaApellidoMaterno"],
+          "nombre" => $_POST["nuevNombre"],
 
-          "idfuncionario" => $_POST["nuevIdFuncionario"],
-          "motivo" => $_POST["nuevMotivo"],
-          "servidor_publico" => strtoupper($_POST["nuevNombreFuncionarioLocal"]),
-          "area_oficina_sp" => strtoupper($_POST["nuevAreaOfFuncionarioLocal"]),
-          "cargo" => strtoupper($_POST["nuevCargoFuncionarioLocal"]),
-          "fecha_ingreso" => $fecha,
-          "hora_ingreso" => $hora,
-          "fecha_salida" => $_POST["nuevFechaSalida"],
-          "hora_salida" => $_POST["nuevHoraSalida"],
-          "usuario" => $_POST["nuevUsuarioDigitador"]
+          "datos_completos" => $_POST["nuevApellidoPaterno"] + " " + $_POST["nuevaApellidoMaterno"] + " " + $_POST["nuevNombre"],
+          "colegio_regional" => $_POST["nuevColegioRegional"],
+          "estado" => $_POST["nuevEstado"],
+          "post_grado" => $_POST["nuevPostGrado"],
+          "usuario" => $_POST["nuevUsuarioDigitador"],
 
+          "imagen" => $ruta,
+          "fecha" => $fechaActual
         );
 
         $respuesta = ModeloRegistro::mdlIngresarRegistro($tabla, $datos);
@@ -93,27 +157,27 @@ class ControladorRegistro
         if ($respuesta == "ok") {
 
           echo '<script>
-            
-						swal({
-							  type: "success",
-							  title: "La visita ha sido registrado correctamente",
-							  showConfirmButton: true,
-							  confirmButtonText: "Cerrar"
-							  }).then((result) => {
-										if (result.value) {
-
-										window.location = "registro";
-
-										}
-									})
-
-						</script>';
+             
+             swal({
+                 type: "success",
+                 title: "El Registro ha sido generado correctamente",
+                 showConfirmButton: true,
+                 confirmButtonText: "Cerrar"
+                 }).then((result) => {
+                     if (result.value) {
+ 
+                     window.location = "registro";
+ 
+                     }
+                   })
+ 
+             </script>';
         } else {
           echo '<script>
-            
+             
           swal({
               type: "success",
-              title: "Error al Registrar en la BDD, Comunicarse con el Administrador",
+              title: "Error con el insert",
               showConfirmButton: true,
               confirmButtonText: "Cerrar"
               }).then((result) => {
@@ -129,21 +193,21 @@ class ControladorRegistro
       } else {
 
         echo '<script>
-
-					swal({
-						  type: "error",
-						  title: "¡El Registro no puede ir con los campos vacíos o llevar caracteres especiales!",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then((result) => {
-							if (result.value) {
-
-							window.location = "registro";
-
-							}
-						})
-
-			  	</script>';
+ 
+           swal({
+               type: "error",
+               title: "¡El Registro no puede ir con los campos vacíos o llevar caracteres especiales!",
+               showConfirmButton: true,
+               confirmButtonText: "Cerrar"
+               }).then((result) => {
+               if (result.value) {
+ 
+               window.location = "registro";
+ 
+               }
+             })
+ 
+           </script>';
       }
     }
   }
@@ -163,14 +227,14 @@ class ControladorRegistro
 
         $tabla = "Tap_RegistroVisita";
 
-        $dateformato= new DateTime($_POST["editarFechaSalida"]);
-        
+        $dateformato = new DateTime($_POST["editarFechaSalida"]);
+
         $datos = array(
 
           "id" => $_POST["editarIdRegistro"],
           "fecha_salida" => $dateformato->format('d/m/Y'),
           "hora_salida" => $_POST["editarHoraSalida"]
-          
+
         );
 
 

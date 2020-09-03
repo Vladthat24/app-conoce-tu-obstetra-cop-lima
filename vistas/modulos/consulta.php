@@ -1546,8 +1546,14 @@
                                                                         <div class="container">
 
                                                                             <form class="form-inline" method="POST" action="">
-
-                                                                                <div class="form-group col-md-3">
+                                                                                <style>
+                                                                                    .col-md-6 {
+                                                                                        margin-top: 20px;
+                                                                                        top: 5%;
+                                                                                        left: 5%;
+                                                                                    }
+                                                                                </style>
+                                                                                <div class="form-group  col-lg-3 col-md-6">
 
                                                                                     <div class="input-group">
 
@@ -1561,7 +1567,7 @@
                                                                                 </div>
 
 
-                                                                                <div class="form-group col-md-3">
+                                                                                <div class="form-group  col-lg-3 col-md-6">
 
                                                                                     <div class="input-group">
 
@@ -1573,7 +1579,7 @@
 
                                                                                 </div>
 
-                                                                                <div class="form-group col-md-3">
+                                                                                <div class="form-group  col-lg-3 col-md-6">
 
                                                                                     <div class="input-group">
 
@@ -1585,7 +1591,7 @@
 
                                                                                 </div>
 
-                                                                                <div class="form-group col-md-3">
+                                                                                <div class="form-group  col-lg-3 col-md-6">
 
                                                                                     <div class="input-group">
 
@@ -1598,16 +1604,16 @@
                                                                                 <br>
                                                                                 <br>
                                                                                 <br>
-                                                                                <!--                                                                                 <div style="text-align:center;">
-                                                                                    <button style="top:50%;left:50%;background-color: #81172d;" class="btn btn-danger btn-lg" type="button" name="consultaobstetra">
+                                                                                <div style="text-align:center;">
+                                                                                    <button style="top:50%;left:50%;background-color: #81172d;" class="btn btn-danger btn-lg" name="consultaobstetra">
                                                                                         <span class="glyphicon glyphicon-search">BUSCAR</span>
                                                                                     </button>
-                                                                                </div> -->
-                                                                                <button class="btn btn-primary" name="consultaobstetra">
+                                                                                </div>
+                                                                                <!-- <button class="btn btn-primary" name="consultaobstetra">
 
                                                                                     <span class="glyphicon glyphicon-search"></span>
 
-                                                                                </button>
+                                                                                </button> -->
 
                                                                             </form>
 
@@ -1629,7 +1635,7 @@
                                                                                 <th style="width:10px">#</th>
                                                                                 <th>VER</th>
                                                                                 <th>NOMBRE Y APELLIDOS</th>
-
+                                                                                <th>COP</th>
                                                                                 <th>REGION DE ADSCRIPCION</th>
                                                                                 <th>ESTADO</th>
                                                                                 <th>POSTGRADOS</th>
@@ -1641,26 +1647,26 @@
                                                                             <?php
 
                                                                             if (isset($_POST['consultaobstetra'])) {
-                                                                                
-                                                                               
+
+
                                                                                 $valor1 = $_POST["nuev_num_colegiatura"];
                                                                                 $valor2 = $_POST["nuevApellido_paterno"];
                                                                                 $valor3 = $_POST["nuevApellido_materno"];
                                                                                 $valor4 = $_POST["nuevNombre"];
 
 
-                                                                                
-                                                                                    $item1 = "cop";
-                                                                                    $item2 = "apellido_paterno";
-                                                                                    $item3 = "apellido_materno";
-                                                                                    $item4 = "nombre";
 
-                                                                                    /* var_dump($valor1,$valor2,$valor3,$valor4); */
-                                                                                    $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1,$item2, $valor2,$item3, $valor3,$item4, $valor4);
-                                                                                    /* var_dump($registro); */
-                                                                                    foreach ($registro as $key => $value) {
+                                                                                $item1 = "cop";
+                                                                                $item2 = "apellido_paterno";
+                                                                                $item3 = "apellido_materno";
+                                                                                $item4 = "nombre";
 
-                                                                                        echo ' <tr>
+                                                                                /* var_dump($valor1,$valor2,$valor3,$valor4); */
+                                                                                $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
+                                                                                /* var_dump($registro); */
+                                                                                foreach ($registro as $key => $value) {
+
+                                                                                    echo ' <tr>
                                                                                                                 <td>' . ($key + 1) . '</td>
                                                                                                                 <td>
 
@@ -1675,14 +1681,13 @@
                                                                                                                 
                                                                                                             
                                                                                                                 <td>' . $value["datos_completos"] . '</td>
-                                                                                                                
+                                                                                                                <td>' . $value["cop"] . '</td>
                                                                                                                 <td>' . $value["colegio_regional"] . '</td>
                                                                                                                 <td>' . $value["estado"] . '</td>
                                                                                                                 <td>' . $value["post_grado"] . '</td>
                                                                                                 
                                                                                                 </tr>';
-                                                                                    }
-                                                                                
+                                                                                }
                                                                             } else {
                                                                             }
 

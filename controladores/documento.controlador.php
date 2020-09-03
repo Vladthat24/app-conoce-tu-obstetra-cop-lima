@@ -1,30 +1,32 @@
 <?php
 
-class ControladorDocumento{
+class ControladorDocumento
+{
 
 	/*=============================================
 	CREAR DOCUMENTO
 	=============================================*/
 
-	static public function ctrCrearDocumento(){
+	static public function ctrCrearDocumento()
+	{
 
-		if(isset($_POST["nuevDocumento"])){
+		if (isset($_POST["nuevaDocumento"])) {
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevDocumento"])){
+			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDocumento"])) {
 
-				$tabla = "Tap_TipoDocumento";
+				$tabla = "documento";
 
-				$datos = $_POST["nuevDocumento"];
+				$datos = $_POST["nuevaDocumento"];
 
 				$respuesta = ModeloDocumento::mdlIngresarDocumento($tabla, $datos);
 
-				if($respuesta == "ok"){
+				if ($respuesta == "ok") {
 
-					echo'<script>
+					echo '<script>
 
 					swal({
 						  type: "success",
-						  title: "La Documento ha sido guardada correctamente",
+						  title: "La categoría ha sido guardada correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
@@ -36,17 +38,14 @@ class ControladorDocumento{
 								})
 
 					</script>';
-
 				}
+			} else {
 
-
-			}else{
-
-				echo'<script>
+				echo '<script>
 
 					swal({
 						  type: "error",
-						  title: "¡La Documento no puede ir vacía o llevar caracteres especiales!",
+						  title: "¡La categoría no puede ir vacía o llevar caracteres especiales!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
@@ -58,49 +57,47 @@ class ControladorDocumento{
 						})
 
 			  	</script>';
-
 			}
-
-		}else{
-			echo '<script>Error Controlador</script>';
 		}
-
 	}
 
 	/*=============================================
 	MOSTRAR DOCUMENTO
 	=============================================*/
 
-	static public function ctrMostrarDocumento($item, $valor){
+	static public function ctrMostrarDocumento($item, $valor)
+	{
 
-		$tabla = "Tap_TipoDocumento";
+		$tabla = "documento";
 
 		$respuesta = ModeloDocumento::mdlMostrarDocumento($tabla, $item, $valor);
 
 		return $respuesta;
-	
 	}
 
 	/*=============================================
 	EDITAR DOCUMENTO
 	=============================================*/
 
-	static public function ctrEditarDocumento(){
+	static public function ctrEditarDocumento()
+	{
 
-		if(isset($_POST["editarDocumento"])){
+		if (isset($_POST["editarDocumento"])) {
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarDocumento"])){
+			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarDocumento"])) {
 
-				$tabla = "Tap_TipoDocumento";
+				$tabla = "documento";
 
-				$datos = array("tipo_documento"=>$_POST["editarDocumento"],
-							   "id"=>$_POST["idDocumento"]);
+				$datos = array(
+					"documento" => $_POST["editarDocumento"],
+					"id" => $_POST["idDocumento"]
+				);
 
 				$respuesta = ModeloDocumento::mdlEditarDocumento($tabla, $datos);
 
-				if($respuesta == "ok"){
+				if ($respuesta == "ok") {
 
-					echo'<script>
+					echo '<script>
 
 					swal({
 						  type: "success",
@@ -116,13 +113,10 @@ class ControladorDocumento{
 								})
 
 					</script>';
-
 				}
+			} else {
 
-
-			}else{
-
-				echo'<script>
+				echo '<script>
 
 					swal({
 						  type: "error",
@@ -138,29 +132,27 @@ class ControladorDocumento{
 						})
 
 			  	</script>';
-
 			}
-
 		}
-
 	}
 
 	/*=============================================
 	BORRAR DOCUMENTO
 	=============================================*/
 
-	static public function ctrBorrarDocumento(){
+	static public function ctrBorrarDocumento()
+	{
 
-		if(isset($_GET["idDocumento"])){
+		if (isset($_GET["idDocumento"])) {
 
-			$tabla ="Tap_TipoDocumento";
+			$tabla = "documento";
 			$datos = $_GET["idDocumento"];
 
 			$respuesta = ModeloDocumento::mdlBorrarDocumento($tabla, $datos);
 
-			if($respuesta == "ok"){
+			if ($respuesta == "ok") {
 
-				echo'<script>
+				echo '<script>
 
 					swal({
 						  type: "success",
@@ -178,6 +170,5 @@ class ControladorDocumento{
 					</script>';
 			}
 		}
-		
 	}
 }

@@ -12,24 +12,7 @@ class ModeloRegistro
     {
         //CAPTURAR DATOS PARA EL EDIT EN EL FORMULARIO
         if ($item != null) {
-
-
-/*             $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item1 LIKE ':$item1%'
-            OR $item2 LIKE ':$item2%'
-            OR $item3 LIKE ':$item3%'
-            OR $item4 LIKE ':$item4%'");
-
-            $stmt->bindParam(":" . $item1, $valor1, PDO::PARAM_INT);
-            $stmt->bindParam(":" . $item2, $valor2, PDO::PARAM_STR);
-            $stmt->bindParam(":" . $item3, $valor3, PDO::PARAM_STR);
-            $stmt->bindParam(":" . $item4, $valor4, PDO::PARAM_STR);
-
-            $stmt->execute();
-
-            return $stmt->fetchAll(); */
-
-             
-        } else{
+        } else {
 
             $stmt = Conexion::conectar()->prepare("SELECT cop,
             datos_completos,colegio_regional,
@@ -156,7 +139,7 @@ class ModeloRegistro
 
             $stmt = Conexion::conectar()->prepare("SELECT cop,apellido_paterno,apellido_materno,
             nombre,datos_completos,colegio_regional,estado,
-            post_grado,imagen,fecha FROM $tabla
+            post_grado,imagen,fecha,usuario FROM $tabla
             ORDER BY cop DESC");
 
             $stmt->execute();
@@ -176,21 +159,24 @@ class ModeloRegistro
     static public function mdlIngresarRegistro($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idfuncionario,
-        motivo,servidor_publico,area_oficina_sp,cargo,fecha_ingreso,hora_ingreso,
-        fecha_salida,hora_salida,usuario)
-        VALUES (:idfuncionario,:motivo,:servidor_publico,:area_oficina_sp,:cargo,
-        :fecha_ingreso,:hora_ingreso,:fecha_salida,:hora_salida,:usuario)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(apellido_paterno,
+		apellido_materno,nombre,
+		datos_completos,colegio_regional,
+		estado,post_grado,imagen,fecha,usuario)
+        VALUES (:apellido_paterno,
+		:apellido_materno,:nombre,
+		:datos_completos,:colegio_regional,
+		:estado,:post_grado,:imagen,:fecha,:usuario)");
 
-        $stmt->bindParam(":idfuncionario", $datos["idfuncionario"], PDO::PARAM_INT);
-        $stmt->bindParam(":motivo", $datos["motivo"], PDO::PARAM_STR);
-        $stmt->bindParam(":servidor_publico", $datos["servidor_publico"], PDO::PARAM_STR);
-        $stmt->bindParam(":area_oficina_sp", $datos["area_oficina_sp"], PDO::PARAM_STR);
-        $stmt->bindParam(":cargo", $datos["cargo"], PDO::PARAM_STR);
-        $stmt->bindParam(":fecha_ingreso", $datos["fecha_ingreso"], PDO::PARAM_STR);
-        $stmt->bindParam(":hora_ingreso", $datos["hora_ingreso"], PDO::PARAM_STR);
-        $stmt->bindParam(":fecha_salida", $datos["fecha_salida"], PDO::PARAM_STR);
-        $stmt->bindParam(":hora_salida", $datos["hora_salida"], PDO::PARAM_STR);
+        $stmt->bindParam(":apellido_paterno", $datos["apellido_paterno"], PDO::PARAM_INT);
+        $stmt->bindParam(":apellido_materno", $datos["apellido_materno"], PDO::PARAM_STR);
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":datos_completos", $datos["datos_completos"], PDO::PARAM_STR);
+        $stmt->bindParam(":colegio_regional", $datos["colegio_regional"], PDO::PARAM_STR);
+        $stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+        $stmt->bindParam(":post_grado", $datos["post_grado"], PDO::PARAM_STR);
+        $stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
+        $stmt->bindParam(":fecha", $datos["fecha"], PDO::PARAM_STR);
         $stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
 
 

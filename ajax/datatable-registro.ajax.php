@@ -39,7 +39,7 @@ class TablaRegistro
        ============================================= */
 
       $imagen = "<a href='" . $registro[$i]["imagen"] . "' onclick='windows.open()'><img src='" . $registro[$i]["imagen"] . "' width='40px'></a>";
-      $botones = "<div class='btn-group'><button class='btn btn-info btnImprimirRegistro' idRegistro='" . $registro[$i]["cop"] . "'><i class='fa fa-print'></i></button><button class='btn btn-warning btnEditarRegistro' idRegistro='" . $registro[$i]["cop"] . "' data-toggle='modal' data-target='#modalEditarRegistro'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarRegistro' idRegistro='" . $registro[$i]["cop"] . "'><i class='fa fa-times'></i></button></div>";
+      $botones = "<div class='btn-group'></button><button class='btn btn-warning btnEditarRegistro' idRegistro='" . $registro[$i]["cop"] . "' data-toggle='modal' data-target='#modalEditarRegistro'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarRegistro' idRegistro='" . $registro[$i]["cop"] . "'><i class='fa fa-times'></i></button></div>";
 
       $datosJson .= '[
 			                        "' . ($i + 1) . '",
@@ -49,7 +49,8 @@ class TablaRegistro
                               "' . $registro[$i]["colegio_regional"] . '",
                               "' . $registro[$i]["estado"] . '",
                               "' . $registro[$i]["post_grado"] . '",
-                              "' . $imagen . '"
+                              "' . $imagen . '",
+                              "' . $registro[$i]["usuario"] . '"
 			    ],';
     }
 

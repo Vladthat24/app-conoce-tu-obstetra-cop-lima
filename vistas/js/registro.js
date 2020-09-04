@@ -4,11 +4,11 @@ LLAMAR AL DNI QUE ESTA ALMACENADO EN EL LOCALSTRORE
  =============================================*/
 $(document).ready(function () {
 
-/* 
-    var dni = localStorage.getItem("dniLocalStore");
-    $("#nuevDniVisitaFuncionario").val(dni);
-
-    $("#nuevEntidadSelectSearch").select2(); */
+    /* 
+        var dni = localStorage.getItem("dniLocalStore");
+        $("#nuevDniVisitaFuncionario").val(dni);
+    
+        $("#nuevEntidadSelectSearch").select2(); */
 
 })
 /*=============================================
@@ -385,9 +385,10 @@ $('#editarHoraSalida').change(function () {
  EDITAR REGISTRO
  =============================================*/
 
-$(".tablaRegistro tbody").on("click", "button.btnEditarRegistro", function () {
+$(".tablas tbody").on("click", "button.btnVerConsulta", function () {
 
     var idRegistro = $(this).attr("idRegistro");
+    console.log("consulta", idRegistro);
     var datos = new FormData();
     datos.append("idRegistro", idRegistro);
 
@@ -402,79 +403,79 @@ $(".tablaRegistro tbody").on("click", "button.btnEditarRegistro", function () {
         dataType: "json",
         success: function (respuesta) {
 
-            var datos = new FormData();
-            datos.append("idFuncionario", respuesta["idfuncionario"]);
+            $('#editarIdRegistro').val(respuesta["cop"]);
+            $('#editarApellidoPaterno').val(respuesta["apellido_paterno"]);
+            $('#editarApellidoPaterno').html(respuesta["apellido_paterno"]);
+            $('#editarApellidoMaterno').val(respuesta["apellido_materno"]);
+            $('#editarApellidoMaterno').html(respuesta["apellido_materno"]);
+            $('#editarNombre').val(respuesta["nombre"]);
+            $('#editarNombre').html(respuesta["nombre"]);
+            $('#editarColegioRegional').val(respuesta["colegio_regional"]);
+            $('#editarColegioRegional').html(respuesta["colegio_regional"]);
 
-            $.ajax({
-                url: "ajax/funcionario.ajax.php",
-                method: "POST",
-                data: datos,
-                cache: false,
-                contentType: false,
-                processData: false,
-                dataType: "json",
-                success: function (respuesta) {
+            $('#editarEstado').val(respuesta["estado"]);
+            $('#editarEstado').html(respuesta["estado"]);
+            $('#editarPostGrado').val(respuesta["post_grado"]);
+            $('#editarPostGrado').html(respuesta["post_grado"]);
+            
 
+            if (respuesta["imagen"] != "") {
 
-                    $("#editarDniVisitaFuncionario").val(respuesta["num_documento"]);
-                    $("#editarNombreFuncionario").val(respuesta["nombre"]);
-                    $("#editarCargoFuncionario").val(respuesta["cargo"]);
+                $("#imagenActual").val(respuesta["imagen"]);
 
+                $(".previsualizar").attr("src", respuesta["imagen"]);
 
-                    var datosEntidad = new FormData();
-                    datosEntidad.append("idEntidad", respuesta["identidad"]);
+            }
 
-                    //METODO AJAX PARA TRAER EL NOMBRE A LA VENTANA EDITAR 
-                    $.ajax({
+        }
 
-                        url: "ajax/entidad.ajax.php",
-                        method: "POST",
-                        data: datosEntidad,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        dataType: "json",
-                        success: function (respuesta) {
+    })
 
-                            $("#editarEntidadFuncionario").val(respuesta["entidad"]);
+})
 
 
-                        }
-
-                    })
-
-                    console.log('Tipo Documento', respuesta["idtipo_documento"]);
-
-                    var datosTipoDocumento = new FormData();
-                    datosTipoDocumento.append("idDocumento", respuesta["idtipo_documento"]);
-
-                    $.ajax({
-
-                        url: "ajax/documento.ajax.php",
-                        method: "POST",
-                        data: datosTipoDocumento,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        dataType: "json",
-                        success: function (respuesta) {
-
-                            $("#editarTipoDocumento").val(respuesta["tipo_documento"]);
 
 
-                        }
 
-                    })
+/*=============================================
+ EDITAR REGISTRO
+ =============================================*/
 
-                }
+$(".tablaRegistro tbody").on("click", "button.btnEditarRegistro", function () {
 
-            })
-            $('#editarIdRegistro').val(respuesta["id"]);
+    var idRegistro = $(this).attr("idRegistro");
+
+    var datos = new FormData();
+    datos.append("idRegistro", idRegistro);
+
+    $.ajax({
+
+        url: "ajax/registro.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+
+            $('#editarIdRegistro').val(respuesta["cop"]);
+            $('#editarApellidoPaterno').val(respuesta["apellido_paterno"]);
+            $('#editarApellidoMaterno').val(respuesta["apellido_materno"]);
+            $('#editarNombre').val(respuesta["nombre"]);
+            $('#editarColegioRegional').val(respuesta["colegio_regional"]);
+            $('#editarEstado').val(respuesta["estado"]);
+            $('#editarEstado').html(respuesta["estado"]);
+            $('#editarPostGrado').val(respuesta["post_grado"]);
             $('#editarUsuarioDigitador').val(respuesta["usuario"]);
-            $('#editarNombreFuncionarioLocal').val(respuesta["servidor_publico"]);
-            $('#editarAreaOfFuncionarioLocal').val(respuesta["area_oficina_sp"]);
-            $('#editarCargoFuncionarioLocal').val(respuesta["cargo"]);
-            $('#editarMotivo').val(respuesta["motivo"]);
+
+            if (respuesta["imagen"] != "") {
+
+                $("#imagenActual").val(respuesta["imagen"]);
+
+                $(".previsualizar").attr("src", respuesta["imagen"]);
+
+            }
 
         }
 
@@ -538,10 +539,9 @@ $(".nuevaImagen").change(function () {
  ELIMINAR TICKET
  =============================================*/
 
-$(".tablaTicket tbody").on("click", "button.btnEliminarTicket", function () {
+$(".tablaRegistro tbody").on("click", "button.btnEliminarRegistro", function () {
 
-    var idTicket = $(this).attr("idTicket");
-    var codigo = $(this).attr("codigo");
+    var idRegistro = $(this).attr("idRegistro");
     var imagen = $(this).attr("imagen");
 
     swal({
@@ -557,7 +557,7 @@ $(".tablaTicket tbody").on("click", "button.btnEliminarTicket", function () {
     }).then(function (result) {
         if (result.value) {
 
-            window.location = "index.php?ruta=ticket&idTicket=" + idTicket + "&imagen=" + imagen + "&codigo=" + codigo;
+            window.location = "index.php?ruta=registro&idRegistro=" + idRegistro + "&imagen=" + imagen;
 
         }
 
@@ -580,7 +580,7 @@ $(".tablaTicket").on("click", ".btnImprimirTicket", function () {
 /*=============================================
 MODAL PARA CREAR FUNCIONARIO DENTRO DEL MODAL DE REGISTRO
  =============================================*/
-/* 
+/*
 $("#listarFuncionario").on("click", function () {
     $('#modalListarFuncionario').modal('show');
 }) */
@@ -617,7 +617,7 @@ SELECCIONAR FUNCIONARIO DE LISTA
             var datosEntidad = new FormData();
             datosEntidad.append("idEntidad", respuesta["identidad"]);
 
-            //METODO AJAX PARA TRAER EL NOMBRE A LA VENTANA EDITAR 
+            //METODO AJAX PARA TRAER EL NOMBRE A LA VENTANA EDITAR
             $.ajax({
 
                 url: "ajax/entidad.ajax.php",

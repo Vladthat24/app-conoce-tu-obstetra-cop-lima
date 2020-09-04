@@ -8,7 +8,7 @@
 		<!-- logo mini -->
 		<span class="logo-mini">
 			
-			<img src="vistas/img/plantilla/icono-negro.png" class="img-responsive" style="padding:10px">
+			<img src="vistas/img/plantilla/icon_favicon.png" class="img-responsive" style="padding:10px">
 
 		</span>
 
@@ -17,7 +17,7 @@
 		<span class="logo-lg">
 			
 <!--			<img src="vistas/img/plantilla/logo-blanco-lineal.png" class="img-responsive" style="padding:10px 0px">-->
-            <img src="vistas/img/plantilla/icono-negro.png" class="img-responsive" width="50px">
+            <img src="vistas/img/plantilla/logo_blanco_obstetras_iam_gif.gif" class="img-responsive" width="200px">
                     
 
 		</span>

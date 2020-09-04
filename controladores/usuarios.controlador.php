@@ -33,10 +33,15 @@ class ControladorUsuarios
 
                         $_SESSION["iniciarSesion"] = "ok";
                         $_SESSION["id"] = $respuesta["id"];
-
+                        $_SESSION["id"] = $respuesta["id_categoria"];
+                        $_SESSION["dni"] = $respuesta["dni"];
                         $_SESSION["nombre"] = $respuesta["nombre"];
                         $_SESSION["oficina"] = $respuesta["oficina"];
                         $_SESSION["area"] = $respuesta["area"];
+                        $_SESSION["cargo"] = $respuesta["cargo"];
+                        $_SESSION["cel"] = $respuesta["cel"];
+                        $_SESSION["sede"] = $respuesta["sede"];
+                        $_SESSION["piso"] = $respuesta["piso"];
                         $_SESSION["usuario"] = $respuesta["usuario"];
                         $_SESSION["foto"] = $respuesta["foto"];
                         $_SESSION["perfil"] = $respuesta["perfil"];
@@ -67,10 +72,6 @@ class ControladorUsuarios
                                         window.location = "inicio";
 
                                 </script>';
-                        } else {
-                            echo '<script>
-                                alert("Error de Login Modelo Actualizar Usuario");
-                            </script>';
                         }
                     } else {
 
@@ -92,19 +93,19 @@ class ControladorUsuarios
     static public function ctrCrearUsuario()
     {
 
-        if (isset($_POST["nuevUsuario"])) {
+        if (isset($_POST["nuevoUsuario"])) {
 
             if (
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["dni"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevNombre"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevOficina"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevArea"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevCargo"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevCel"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevSede"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevPiso"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevUsuario"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevPassword"])
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoOficina"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoArea"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoCargo"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoCel"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoSede"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoPiso"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])
             ) {
 
                 /* =============================================
@@ -113,9 +114,9 @@ class ControladorUsuarios
 
                 $ruta = "";
 
-                if (isset($_FILES["nuevFoto"]["tmp_name"])) {
+                if (isset($_FILES["nuevaFoto"]["tmp_name"])) {
 
-                    list($ancho, $alto) = getimagesize($_FILES["nuevFoto"]["tmp_name"]);
+                    list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
 
                     $nuevoAncho = 500;
                     $nuevoAlto = 500;
@@ -124,7 +125,7 @@ class ControladorUsuarios
                       CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
                       ============================================= */
 
-                    $directorio = "vistas/img/usuarios/" . $_POST["nuevUsuario"];
+                    $directorio = "vistas/img/usuarios/" . $_POST["nuevoUsuario"];
 
                     mkdir($directorio, 0755);
 
@@ -132,7 +133,7 @@ class ControladorUsuarios
                       DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
                       ============================================= */
 
-                    if ($_FILES["nuevFoto"]["type"] == "image/jpeg") {
+                    if ($_FILES["nuevaFoto"]["type"] == "image/jpeg") {
 
                         /* =============================================
                           GUARDAMOS LA IMAGEN EN EL DIRECTORIO
@@ -140,9 +141,9 @@ class ControladorUsuarios
 
                         $aleatorio = mt_rand(100, 999);
 
-                        $ruta = "vistas/img/usuarios/" . $_POST["nuevUsuario"] . "/" . $aleatorio . ".jpg";
+                        $ruta = "vistas/img/usuarios/" . $_POST["nuevoUsuario"] . "/" . $aleatorio . ".jpg";
 
-                        $origen = imagecreatefromjpeg($_FILES["nuevFoto"]["tmp_name"]);
+                        $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
 
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -151,7 +152,7 @@ class ControladorUsuarios
                         imagejpeg($destino, $ruta);
                     }
 
-                    if ($_FILES["nuevFoto"]["type"] == "image/png") {
+                    if ($_FILES["nuevaFoto"]["type"] == "image/png") {
 
                         /* =============================================
                           GUARDAMOS LA IMAGEN EN EL DIRECTORIO
@@ -159,9 +160,9 @@ class ControladorUsuarios
 
                         $aleatorio = mt_rand(100, 999);
 
-                        $ruta = "vistas/img/usuarios/" . $_POST["nuevUsuario"] . "/" . $aleatorio . ".png";
+                        $ruta = "vistas/img/usuarios/" . $_POST["nuevoUsuario"] . "/" . $aleatorio . ".png";
 
-                        $origen = imagecreatefrompng($_FILES["nuevFoto"]["tmp_name"]);
+                        $origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
 
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -171,28 +172,23 @@ class ControladorUsuarios
                     }
                 }
 
-                $tabla = "Tap_Usuario";
+                $tabla = "usuarios";
 
-                $encriptar = crypt($_POST["nuevPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-
-                /* var_dump($_POST["nuevFecha"]); */
+                $encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
                 $datos = array(
-
-                    "tipo_documento" => $_POST["nuevTipoDocumento"],
-                    "num_documento" => $_POST["dni"],
-                    "nombre" => $_POST["nuevNombre"],
-                    "oficina" => $_POST["nuevOficina"],
-                    "area" => $_POST["nuevArea"],
-                    "cargo" => $_POST["nuevCargo"],
-                    "cel" => $_POST["nuevCel"],
-                    "sede" => $_POST["nuevSede"],
-                    "piso" => $_POST["nuevPiso"],
-                    "usuario" => $_POST["nuevUsuario"],
+                    "dni" => $_POST["dni"],
+                    "nombre" => $_POST["nuevoNombre"],
+                    "oficina" => $_POST["nuevoOficina"],
+                    "area" => $_POST["nuevoArea"],
+                    "cargo" => $_POST["nuevoCargo"],
+                    "cel" => $_POST["nuevoCel"],
+                    "sede" => $_POST["nuevoSede"],
+                    "piso" => $_POST["nuevoPiso"],
+                    "usuario" => $_POST["nuevoUsuario"],
                     "password" => $encriptar,
-                    "perfil" => $_POST["nuevPerfil"],
-                    "foto" => $ruta,
-                    "fecha" => $_POST["nuevFecha"]
+                    "perfil" => $_POST["nuevoPerfil"],
+                    "foto" => $ruta
                 );
 
                 $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
@@ -220,28 +216,11 @@ class ControladorUsuarios
 				
 
 					</script>';
-                } else {
-                    echo '<script>
-
-					swal({
-
-						type: "success",
-						title: "¡Error al Crear un Usuario, Contactar con el Administrador!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-
-					});
-				
-
-					</script>';
                 }
             } else {
 
                 echo '<script>
-                    
+
 					swal({
 
 						type: "error",
@@ -272,7 +251,7 @@ class ControladorUsuarios
     static public function ctrMostrarUsuarios($item, $valor)
     {
 
-        $tabla = "Tap_Usuario";
+        $tabla = "usuarios";
 
         $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
 
@@ -282,9 +261,9 @@ class ControladorUsuarios
     static public function ctrMostrarUsuariosInformatico($item, $item2, $valor)
     {
 
-        $tabla = "Tap_Usuario";
+        $tabla = "usuarios";
 
-        $respuesta = ModeloUsuarios::mdlMostrarUsuarioInformatico($tabla, $item, $item2, $valor);
+        $respuesta = ModeloUsuarios::mdlMostrarUusarioInformatico($tabla, $item, $item2, $valor);
 
         return $respuesta;
     }
@@ -379,7 +358,7 @@ class ControladorUsuarios
                     }
                 }
 
-                $tabla = "Tap_Usuario";
+                $tabla = "usuarios";
 
                 if ($_POST["editarPassword"] != "") {
 
@@ -411,10 +390,7 @@ class ControladorUsuarios
                 }
 
                 $datos = array(
-
-                    
-                    "tipo_documento" => $_POST["editarTipoDocumento"],
-                    "num_documento" => $_POST["editarDni"],
+                    "dni" => $_POST["editarDni"],
                     "nombre" => $_POST["editarNombre"],
                     "oficina" => $_POST["editarOficina"],
                     "area" => $_POST["editarArea"],
@@ -422,12 +398,10 @@ class ControladorUsuarios
                     "cel" => $_POST["editarCel"],
                     "sede" => $_POST["editarSede"],
                     "piso" => $_POST["editarPiso"],
-                    "perfil" => $_POST["editarPerfil"],
-                    
                     "usuario" => $_POST["editarUsuario"],
                     "password" => $encriptar,
-                    "foto" => $ruta,
-                    "fecha" => $_POST["editarFecha"]
+                    "perfil" => $_POST["editarPerfil"],
+                    "foto" => $ruta
                 );
 
                 $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
@@ -462,7 +436,7 @@ class ControladorUsuarios
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 							if (result.value) {
-                                console.log(result);
+                                                        console.log(result);
 							window.location = "usuarios";
 
 							}
@@ -482,7 +456,7 @@ class ControladorUsuarios
 
         if (isset($_GET["idUsuario"])) {
 
-            $tabla = "Tap_Usuario";
+            $tabla = "usuarios";
             $datos = $_GET["idUsuario"];
 
             if ($_GET["fotoUsuario"] != "") {

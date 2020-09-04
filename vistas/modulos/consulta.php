@@ -2,11 +2,11 @@
 
 <head>
 
-    <link rel="shortcut icon" href="http://colegiodeobstetras.pe/wp-content/uploads/icon_favicon.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="http://colegiodeobstetras.pe/wp-content/uploads/icon_iphone.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="http://colegiodeobstetras.pe/wp-content/uploads/icon_iphone_r.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="http://colegiodeobstetras.pe/wp-content/uploads/icon_ipad.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="http://colegiodeobstetras.pe/wp-content/uploads/icon_ipad_r.png">
+    <link rel="shortcut icon" href="vistas/bower_components/datospaginaobstetras/icon_favicon(1).png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="vistas/bower_components/datospaginaobstetras/icon_iphone.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="vistas/bower_components/datospaginaobstetras/icon_iphone_r.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="vistas/bower_components/datospaginaobstetras/icon_ipad.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="vistas/bower_components/datospaginaobstetras/icon_ipad_r.png">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
@@ -106,25 +106,25 @@
             padding: 0 !important;
         }
     </style>
-    <link rel='stylesheet' id='contact-form-7-css' href='http://colegiodeobstetras.pe/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='gg-lightbox-css-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/js/lightboxes/lightcase/src/css/lightcase.min.css?ver=5.3.4' type='text/css' media='all' />
-    <link rel='stylesheet' id='videojs-css' href='http://colegiodeobstetras.pe/wp-content/plugins/videojs-html5-player/videojs/video-js.min.css?ver=5.3.4' type='text/css' media='all' />
-    <link rel='stylesheet' id='wen-logo-slider-slick-carousel-css' href='http://colegiodeobstetras.pe/wp-content/plugins/wen-logo-slider/vendors/slick-carousel/slick.css?ver=1.3.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='wen-logo-slider-slick-theme-css' href='http://colegiodeobstetras.pe/wp-content/plugins/wen-logo-slider/vendors/slick-carousel/slick-theme.css?ver=1.3.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='wen-logo-slider-css' href='http://colegiodeobstetras.pe/wp-content/plugins/wen-logo-slider/public/css/wen-logo-slider-public.css?ver=2.0.6' type='text/css' media='all' />
-    <link rel='stylesheet' id='wp-show-posts-css' href='http://colegiodeobstetras.pe/wp-content/plugins/wp-show-posts/css/wp-show-posts-min.css?ver=1.1.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='contact-form-7-css' href='vistas/bower_components/datospaginaobstetras/css/styles.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='gg-lightbox-css-css' href='vistas/bower_components/datospaginaobstetras/css/lightcase.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='videojs-css' href='vistas/bower_components/datospaginaobstetras/css/video-js.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='wen-logo-slider-slick-carousel-css' href='vistas/bower_components/datospaginaobstetras/css/slick.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='wen-logo-slider-slick-theme-css' href='vistas/bower_components/datospaginaobstetras/css/slick-theme.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='wen-logo-slider-css' href='vistas/bower_components/datospaginaobstetras/css/wen-logo-slider-public.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='wp-show-posts-css' href='vistas/bower_components/datospaginaobstetras/css/wp-show-posts-min.css' type='text/css' media='all' />
 
 
 
     <link rel='stylesheet' id='hunted-fonts-css' href='//fonts.googleapis.com/css?family=Montserrat%3A300%2C300i%2C400%2C400i%2C700%2C700i%7CRoboto%3A300%2C300i%2C400%2C400i%2C700%2C700i' type='text/css' media='all' />
-    <link rel='stylesheet' id='normalize-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/css/normalize.css?ver=5.3.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='normalize-css' href='vistas/bower_components/datospaginaobstetras/css/normalize.css' type='text/css' media='all' />
     <!--     <link rel='stylesheet' id='hunted-style-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/style.css?ver=5.3.4' type='text/css' media='all' /> -->
 
 
-    <link rel='stylesheet' id='font-awesome-css' href='http://colegiodeobstetras.pe/wp-content/plugins/js_composer/assets/lib/bower/font-awesome/css/font-awesome.min.css?ver=6.0.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='bxslider-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/css/jquery.bxslider.css?ver=5.3.4' type='text/css' media='all' />
-    <link rel='stylesheet' id='hunted-responsive-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/css/responsive.css?ver=5.3.4' type='text/css' media='all' />
-    <link rel='stylesheet' id='slicknav-css' href='http://colegiodeobstetras.pe/wp-content/themes/hunted/css/slicknav.css?ver=5.3.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='font-awesome-css' href='vistas/bower_components/datospaginaobstetras/css/font-awesome.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='bxslider-css' href='vistas/bower_components/datospaginaobstetras/css/jquery.bxslider.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='hunted-responsive-css' href='vistas/bower_components/datospaginaobstetras/css/responsive.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='slicknav-css' href='vistas/bower_components/datospaginaobstetras/css/slicknav.css' type='text/css' media='all' />
     <style id='slicknav-inline-css' type='text/css'>
         body {
             background-color: #FFF;
@@ -1633,12 +1633,12 @@
 
                                                                             <tr>
                                                                                 <th style="width:10px">#</th>
-                                                                                <th>VER</th>
-                                                                                <th>NOMBRE Y APELLIDOS</th>
-                                                                                <th>COP</th>
-                                                                                <th>REGION DE ADSCRIPCION</th>
-                                                                                <th>ESTADO</th>
-                                                                                <th>POSTGRADOS</th>
+                                                                                <th style="color: #81172d;">VER</th>
+                                                                                <th style="color: #81172d;">NOMBRE Y APELLIDOS</th>
+                                                                                <th style="color: #81172d;">COP</th>
+                                                                                <th style="color: #81172d;">REGION DE ADSCRIPCION</th>
+                                                                                <th style="color: #81172d;">ESTADO</th>
+                                                                                <th style="color: #81172d;">POSTGRADOS</th>
                                                                             </tr>
 
                                                                         </thead>
@@ -1653,26 +1653,42 @@
                                                                                 $valor2 = $_POST["nuevApellido_paterno"];
                                                                                 $valor3 = $_POST["nuevApellido_materno"];
                                                                                 $valor4 = $_POST["nuevNombre"];
+                                                                                if (empty($valor1) && empty($valor2) && empty($valor3) && empty($valo4)) {
+                                                                                    echo '<script>
+             
+                                                                                    swal({
+                                                                                        type: "success",
+                                                                                        title: "Ingrese Datos",
+                                                                                        showConfirmButton: true,
+                                                                                        confirmButtonText: "Cerrar"
+                                                                                        }).then((result) => {
+                                                                                            if (result.value) {
+                                                                        
+                                                                                            window.location = "consulta";
+                                                                        
+                                                                                            }
+                                                                                          })
+                                                                        
+                                                                                    </script>';
+                                                                                } else {
 
+                                                                                    $item1 = "cop";
+                                                                                    $item2 = "apellido_paterno";
+                                                                                    $item3 = "apellido_materno";
+                                                                                    $item4 = "nombre";
 
+                                                                                    /* var_dump($valor1,$valor2,$valor3,$valor4); */
+                                                                                    $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
+                                                                                    /* var_dump($registro); */
+                                                                                    foreach ($registro as $key => $value) {
 
-                                                                                $item1 = "cop";
-                                                                                $item2 = "apellido_paterno";
-                                                                                $item3 = "apellido_materno";
-                                                                                $item4 = "nombre";
-
-                                                                                /* var_dump($valor1,$valor2,$valor3,$valor4); */
-                                                                                $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
-                                                                                /* var_dump($registro); */
-                                                                                foreach ($registro as $key => $value) {
-
-                                                                                    echo ' <tr>
+                                                                                        echo ' <tr>
                                                                                                                 <td>' . ($key + 1) . '</td>
                                                                                                                 <td>
 
                                                                                                                     <div class="btn-group">
                                                                                                                     
-                                                                                                                        <button class="btn btn-warning btnEditarUsuario" idRegistro="' . $value["cop"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-eye"></i></button>
+                                                                                                                        <button class="btn btn-warning btnVerConsulta" idRegistro="' . $value["cop"] . '" data-toggle="modal" data-target="#modalVerConsulta"><i class="fa fa-eye"></i></button>
 
                                                                                                                     </div>  
                                                                             
@@ -1687,6 +1703,7 @@
                                                                                                                 <td>' . $value["post_grado"] . '</td>
                                                                                                 
                                                                                                 </tr>';
+                                                                                    }
                                                                                 }
                                                                             } else {
                                                                             }
@@ -1698,6 +1715,136 @@
 
                                                                 </div>
 
+                                                                <div id="modalVerConsulta" class="modal fade" role="dialog">
+
+                                                                    <div class="modal-dialog">
+
+                                                                        <div class="modal-content">
+
+                                                                            <form role="form" method="post" enctype="multipart/form-data">
+
+                                                                                <!--=====================================
+                                                                                    CABEZA DEL MODAL
+                                                                                    ======================================-->
+
+                                                                                <div class="modal-header" style="background:#81172d;">
+
+                                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                                                                    <h4 class="modal-title" style="color: white;">Visualizador del Colegiado </h4>
+
+                                                                                </div>
+
+                                                                                <!--=====================================
+                                                                                    CUERPO DEL MODAL
+                                                                                    ======================================-->
+
+                                                                                <div class="modal-body">
+
+                                                                                    <div class="content">
+
+                                                                                        <div class="row">
+
+                                                                                            <!-- ENTRADA PARA NOMBRE FUNCIONARIO -->
+                                                                                            <div class="fron-row">
+                                                                                                <div class="form-group col-md-5">
+
+                                                                                                    <!-- <input type="file" class="nuevaImagen inputfile" name="editarImagen"> -->
+
+                                                                                                    <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="180px">
+                                                                                                    <input type="hidden" name="imagenActual" id="imagenActual">
+
+                                                                                                </div>
+                                                                                                <div class="form-group col-md-7">
+
+                                                                                                    <div class="" style="padding: 20px;">
+                                                                                                        <label for="label">Apellido Paterno:</label>
+                                                                                                        <h3 style="text-align: center;" id="editarApellidoPaterno"></h3>
+                                                                                                        <!-- <input type="text" class="form-control input-lx" name="editarApellidoPaterno"> -->
+                                                                                                        <input type="text" class="form-control input-lx hidden" id="editarIdRegistro" name="editarIdRegistro">
+
+                                                                                                    </div>
+
+                                                                                                    <div class="" style="padding: 20px;">
+
+
+                                                                                                        <label for="label">Apellido Materno:</label>
+                                                                                                        <!-- <input type="text" class="form-control input-lx" id="editarApellidoMaterno" name="editarApellidoMaterno" placeholder="Apellido Materno" required> -->
+                                                                                                        <h3 style="text-align: center;" id="editarApellidoMaterno"></h3>
+                                                                                                    </div>
+
+                                                                                                </div>
+
+                                                                                                <!-- ENTRADA PARA CARGO FUNCIONARIO -->
+                                                                                                <hr>
+                                                                                                <div class="form-group col-md-6" style="padding: 5px;">
+                                                                                                    <hr style="background-color: black;">
+                                                                                                    <div class="">
+                                                                                                        <label for="label">Nombre:</label>
+                                                                                                        <!-- <span class="input-group-addon">Nombre:</span> -->
+                                                                                                        <h4 id="editarNombre"></h4>
+                                                                                                        <!-- <input type="text" class="form-control input-lx" id="editarNombre" name="editarNombre" placeholder="Nombres" required> -->
+
+                                                                                                    </div>
+
+                                                                                                </div>
+
+                                                                                                <!-- ENTRADA PARA COLEGIO REGIONAL -->
+                                                                                                <hr>
+                                                                                                <div class="form-group col-md-6" style="padding: 5px;">
+                                                                                                    <hr style="background-color: black;">
+                                                                                                    <div class="">
+                                                                                                        <label for="label">Colegio Regional:</label>
+                                                                                                        <!-- <span class="input-group-addon">Colegio Regional:</span> -->
+                                                                                                        <h4 id="editarColegioRegional"></h4>
+                                                                                                        <!-- <input type="text" class="form-control input-lx" id="editarColegioRegional" name="editarColegioRegional" required> -->
+
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                                <hr>
+
+                                                                                                <div class="form-group col-md-6" style="padding: 5px;">
+                                                                                                    <hr style="background-color: black;">
+                                                                                                    <div class="">
+
+                                                                                                        <label for="label">Estado:</label>
+                                                                                                        <h4 id="editarEstado"></h4>
+                                                                                                        <!-- <input type="text" class="form-control input-lx" id="editarEstado" required> -->
+
+                                                                                                    </div>
+
+
+                                                                                                </div>
+
+                                                                                                <hr>
+                                                                                                <div class="form-group col-md-6" style="padding: 5px;">
+                                                                                                    <hr style="background-color: black;">
+                                                                                                    <div class="">
+                                                                                                        <label for="label">Post Grado:</label>
+                                                                                                        <!-- <span class="input-group-addon">Post Grado:</span> -->
+                                                                                                        <h4 id="editarPostGrado"></h4>
+                                                                                                        <!-- <input type="text" class="form-control input-lx" id="editarPostGrado" name="editarPostGrado" required> -->
+
+                                                                                                    </div>
+
+                                                                                                </div>
+
+                                                                                            </div>
+
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </form>
+
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
                                                                 <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
 
                                                                 <div class="wpb_text_column wpb_content_element ">

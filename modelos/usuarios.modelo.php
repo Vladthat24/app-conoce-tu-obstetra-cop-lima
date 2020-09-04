@@ -24,8 +24,10 @@ class ModeloUsuarios
 
             $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id DESC");
 
-            $stmt->execute();
+            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
 
+            $stmt->execute();
+            //
             return $stmt->fetchAll();
         }
 
@@ -35,7 +37,7 @@ class ModeloUsuarios
         $stmt = null;
     }
 
-    static public function mdlMostrarUsuarioInformatico($tabla, $item, $item2, $valor)
+    static public function mdlMostrarUusarioInformatico($tabla, $item, $item2, $valor)
     {
 
         if ($item != null) {
@@ -54,7 +56,7 @@ class ModeloUsuarios
             $stmt->bindParam(":" . $item2, $valor, PDO::PARAM_STR);
 
             $stmt->execute();
-
+            //
             return $stmt->fetchAll();
         }
 
@@ -71,15 +73,9 @@ class ModeloUsuarios
     static public function mdlIngresarUsuario($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla
-        (tipo_documento,num_documento,nombre,oficina,
-        area,cargo,cel,sede,piso,usuario, password,perfil,foto,fecha_registro,fecha) 
-        VALUES (:tipo_documento,:num_documento,:nombre,:oficina,
-        :area,:cargo,:cel,:sede,:piso,:usuario,:password,:perfil,:foto,SYSDATETIME(),:fecha)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(dni,nombre,oficina,area,cargo,cel,sede,piso,usuario, password, perfil, foto) VALUES (:dni,:nombre,:oficina,:area,:cargo,:cel,:sede,:piso,:usuario, :password, :perfil, :foto)");
 
-       
-        $stmt->bindParam(":tipo_documento", $datos["tipo_documento"], PDO::PARAM_STR);
-        $stmt->bindParam(":num_documento", $datos["num_documento"], PDO::PARAM_STR);
+        $stmt->bindParam(":dni", $datos["dni"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt->bindParam(":oficina", $datos["oficina"], PDO::PARAM_STR);
         $stmt->bindParam(":area", $datos["area"], PDO::PARAM_STR);
@@ -89,10 +85,8 @@ class ModeloUsuarios
         $stmt->bindParam(":piso", $datos["piso"], PDO::PARAM_STR);
         $stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
         $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
-        
         $stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
         $stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
-        $stmt->bindParam(":fecha", $datos["fecha"], PDO::PARAM_STR);
 
         if ($stmt->execute()) {
 
@@ -114,13 +108,9 @@ class ModeloUsuarios
     static public function mdlEditarUsuario($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_documento=:tipo_documento
-        ,num_documento=:num_documento,nombre = :nombre,oficina= :oficina,area=:area,cargo=:cargo,cel=:cel,sede=:sede,piso=:piso,
-         password = :password,perfil = :perfil, foto = :foto, fecha=:fecha WHERE usuario = :usuario");
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET dni = :dni,nombre = :nombre,oficina= :oficina,area=:area,cargo=:cargo,cel=:cel,sede=:sede,piso=:piso, password = :password, perfil = :perfil, foto = :foto WHERE usuario = :usuario");
 
-        
-        $stmt->bindParam(":tipo_documento", $datos["tipo_documento"], PDO::PARAM_STR);
-        $stmt->bindParam(":num_documento", $datos["num_documento"], PDO::PARAM_STR);
+        $stmt->bindParam(":dni", $datos["dni"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt->bindParam(":oficina", $datos["oficina"], PDO::PARAM_STR);
         $stmt->bindParam(":area", $datos["area"], PDO::PARAM_STR);
@@ -129,12 +119,9 @@ class ModeloUsuarios
         $stmt->bindParam(":sede", $datos["sede"], PDO::PARAM_STR);
         $stmt->bindParam(":piso", $datos["piso"], PDO::PARAM_STR);
         $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
-        
         $stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
         $stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
         $stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
-        $stmt->bindParam(":fecha",$datos["fecha"],PDO::PARAM_STR);
-
 
         if ($stmt->execute()) {
 

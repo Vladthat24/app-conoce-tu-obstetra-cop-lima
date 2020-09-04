@@ -12,12 +12,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Plataforma Tecnológica</title>
+  <title>Colegio de Obstetras del Perú</title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel='stylesheet' id='hunted-style-css' href='vistas/bower_components/bootstrap/dist/css/style_pagina.css' type='text/css' media='all' />
-  <link rel="icon" href="vistas/img/plantilla/icono-negro.png">
+  <link rel='stylesheet' id='hunted-style-css' href='vistas/bower_components/bootstrap/dist/css/style_pagina.css' type='text/css' media='all' />
+  <link rel="icon" href="vistas/img/plantilla/icon_favicon.png">
 
   <!--=====================================
        PLUGINS DE CSS
@@ -192,7 +192,6 @@
 
       include "modulos/" . $_GET["ruta"] . ".php";
     }
-
   } else {
 
     include "modulos/consulta.php";

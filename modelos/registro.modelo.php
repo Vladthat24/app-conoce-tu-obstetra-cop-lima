@@ -14,7 +14,7 @@ class ModeloRegistro
         if ($item != null) {
         } else {
 
-            $stmt = Conexion::conectar()->prepare("SELECT cop,
+            $stmt = Conexion::conectar()->prepare("SELECT LPAD(cop,5,'0') as cop,
             datos_completos,colegio_regional,
             estado,post_grado FROM $tabla WHERE $item1=:$item1 OR $item2=:$item2 OR $item3=:$item3 OR $item4=:$item4");
 
@@ -128,9 +128,9 @@ class ModeloRegistro
         //CAPTURAR DATOS PARA EL EDIT EN EL FORMULARIO
         if ($item != null) {
 
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY id DESC");
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY cop DESC");
 
-            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_INT);
 
             $stmt->execute();
 
@@ -168,7 +168,7 @@ class ModeloRegistro
 		:datos_completos,:colegio_regional,
 		:estado,:post_grado,:imagen,:fecha,:usuario)");
 
-        $stmt->bindParam(":apellido_paterno", $datos["apellido_paterno"], PDO::PARAM_INT);
+        $stmt->bindParam(":apellido_paterno", $datos["apellido_paterno"], PDO::PARAM_STR);
         $stmt->bindParam(":apellido_materno", $datos["apellido_materno"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt->bindParam(":datos_completos", $datos["datos_completos"], PDO::PARAM_STR);
@@ -200,11 +200,20 @@ class ModeloRegistro
     static public function mdlEditarRegistro($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET fecha_salida=:fecha_salida,hora_salida=:hora_salida WHERE id = :id");
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET apellido_paterno=:apellido_paterno,
+		apellido_materno=:apellido_materno,nombre=:nombre,
+		datos_completos=:datos_completos,colegio_regional=:colegio_regional,
+		estado=:estado,post_grado=:post_grado,imagen=:imagen WHERE cop = :cop");
 
-        $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
-        $stmt->bindParam(":fecha_salida", $datos["fecha_salida"], PDO::PARAM_STR);
-        $stmt->bindParam(":hora_salida", $datos["hora_salida"], PDO::PARAM_STR);
+        $stmt->bindParam(":cop", $datos["cop"], PDO::PARAM_INT);
+        $stmt->bindParam(":apellido_paterno", $datos["apellido_paterno"], PDO::PARAM_STR);
+        $stmt->bindParam(":apellido_materno", $datos["apellido_materno"], PDO::PARAM_STR);
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":datos_completos", $datos["datos_completos"], PDO::PARAM_STR);
+        $stmt->bindParam(":colegio_regional", $datos["colegio_regional"], PDO::PARAM_STR);
+        $stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+        $stmt->bindParam(":post_grado", $datos["post_grado"], PDO::PARAM_STR);
+        $stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
 
         if ($stmt->execute()) {
 
@@ -225,9 +234,9 @@ class ModeloRegistro
     static public function mdlEliminarRegistro($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE cop = :cop");
 
-        $stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+        $stmt->bindParam(":cop", $datos, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
 
@@ -266,4 +275,27 @@ class ModeloRegistro
 
         $stmt = null;
     }
+
+    static public function mdlCantidadRegistros($tabla, $item, $valor)
+    {
+        //CAPTURAR DATOS PARA EL EDIT EN EL FORMULARIO
+        if ($item != null) {
+
+        } else {
+
+            $stmt = Conexion::conectar()->prepare("SELECT count(*) AS CANTIDAD FROM $tabla");
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+
+        $stmt->close();
+
+        $stmt = null;
+    }
+
+
+
+
 }

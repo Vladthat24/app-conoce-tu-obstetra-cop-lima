@@ -15,12 +15,10 @@ class AjaxRegistro
   {
 
 
-    $item = "id";
+    $item = "cop";
     $valor = $this->idRegistro;
-    $item2 = null;
-    $valor2 = null;
 
-    $respuesta = ControladorRegistro::ctrMostrarRegistro($item, $valor, $item2, $valor2);
+    $respuesta = ControladorRegistro::ctrMostrarRegistro($item, $valor);
     echo json_encode($respuesta);
   }
 }

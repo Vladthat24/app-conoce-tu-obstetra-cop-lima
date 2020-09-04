@@ -1,6 +1,8 @@
 <?php
 @session_start();
-
+//#3c8dbc
+//367fa9
+//357ca5
 require_once "../controladores/registro.controlador.php";
 require_once "../modelos/registro.modelo.php";
 
@@ -39,7 +41,7 @@ class TablaRegistro
        ============================================= */
 
       $imagen = "<a href='" . $registro[$i]["imagen"] . "' onclick='windows.open()'><img src='" . $registro[$i]["imagen"] . "' width='40px'></a>";
-      $botones = "<div class='btn-group'></button><button class='btn btn-warning btnEditarRegistro' idRegistro='" . $registro[$i]["cop"] . "' data-toggle='modal' data-target='#modalEditarRegistro'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarRegistro' idRegistro='" . $registro[$i]["cop"] . "'><i class='fa fa-times'></i></button></div>";
+      $botones = "<div class='btn-group'></button><button class='btn btn-warning btnEditarRegistro' idRegistro='" . $registro[$i]["cop"] . "' data-toggle='modal' data-target='#modalEditarRegistro'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarRegistro' idRegistro='" . $registro[$i]["cop"] . "'imagen='" . $registro[$i]["imagen"] . "'><i class='fa fa-times'></i></button></div>";
 
       $datosJson .= '[
 			                        "' . ($i + 1) . '",

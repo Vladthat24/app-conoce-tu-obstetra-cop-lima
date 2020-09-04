@@ -24,25 +24,10 @@
   <section class="content">
 
     <!-- Default box -->
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title">Title</h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fa fa-times"></i></button>
-        </div>
-      </div>
-      <div class="box-body">
-        <iframe width="1800" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiYTU2MzUxN2QtZmIwOC00OGNmLTljMTItMWFkZTQ1MjVjM2FlIiwidCI6IjEzODQxZDVmLTk2OGQtNDYyNC1hN2RhLWQ2OGE2MDA2YTg0YSIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
-      </div>
-      <!-- /.box-body -->
-      <div class="box-footer">
-        Desarrollador : YOSSHI CONDORI MENDIETA
-      </div>
-      <!-- /.box-footer-->
+    <div class="row">
+      <?php
+        include "cajas-superiores.php";
+      ?>
     </div>
     <!-- /.box -->
 

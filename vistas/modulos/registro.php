@@ -4,7 +4,7 @@
 
         <h1>
 
-            Administrar Registro de Visitas
+            Administrar Registro de Colegiado
 
         </h1>
 
@@ -12,7 +12,7 @@
 
             <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
 
-            <li class="active">Administrar Registro de Visitas</li>
+            <li class="active">Administrar Registro de Colegiado</li>
 
         </ol>
 
@@ -24,13 +24,13 @@
 
             <div class="box-header with-border">
 
-                <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarColegiado">
+                <button class="btn btn-danger" style="background-color: #81172d;" data-toggle="modal" data-target="#modalAgregarColegiado">
 
                     Agregar Colegiado
 
                 </button>
 
-                <button class="btn btn-primary" id="actualizar"><img src="vistas/img/plantilla/android-o-iconos-adaptivos.gif" width="30px" /></button>
+                <button class="btn btn-primary" style="background-color: #81172d;" id="actualizar"><img src="vistas/img/plantilla/android-o-iconos-adaptivos.gif" width="30px" /></button>
 
             </div>
 
@@ -88,7 +88,7 @@ MODAL AGREGAR VISITA
                 CABEZA DEL MODAL
                 ======================================-->
 
-                <div class="modal-header" style="background:#3c8dbc; color:white">
+                <div class="modal-header" style="background:#81172d; color:white">
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -130,7 +130,7 @@ MODAL AGREGAR VISITA
 
                                         <span class="input-group-addon">Apellido Materno:</span>
 
-                                        <input type="text" class="form-control input-lx" name="nuevaApellidoMaterno" placeholder="Apellido Materno" required>
+                                        <input type="text" class="form-control input-lx" name="nuevApellidoMaterno" placeholder="Apellido Materno" required>
                                         <input type="text" class="form-control input-lx hidden" id="codigoUnicoReclamo" name="codigoUnicoReclamo" require>
                                     </div>
 
@@ -245,7 +245,7 @@ MODAL AGREGAR VISITA
 
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-                    <button type="submit" class="btn btn-primary">Guardar Registro</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #81172d;">Guardar Colegiado</button>
 
                 </div>
 
@@ -283,11 +283,11 @@ MODAL EDITAR REGISTRO
                     CABEZA DEL MODAL
                     ======================================-->
 
-                <div class="modal-header" style="background:#3c8dbc; color:white">
+                <div class="modal-header" style="background:#81172d; color:white">
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                    <h4 class="modal-title">Editar Visita</h4>
+                    <h4 class="modal-title">Editar Colegiado </h4>
 
                 </div>
 
@@ -297,203 +297,138 @@ MODAL EDITAR REGISTRO
 
                 <div class="modal-body">
 
+                    <div class="content">
 
-                    <p class="help-block"><strong>FUNCIONARIO VISITANTE:</strong></p>
+                        <div class="row">
 
+                            <!-- ENTRADA PARA NOMBRE FUNCIONARIO -->
+                            <div class="fron-row">
 
-                    <!-- ENTRADA PARA SELECCIONAR CATEGORÍA DEL REGISTRO-->
-                    <div class="form-row">
+                                <div class="form-group col-md-12">
 
-                        <div class="form-group col-md-12">
+                                    <div class="input-group">
 
-                            <div class="input-group ">
+                                        <span class="input-group-addon">Apellido Paterno:</span>
 
-                                <span class="input-group-addon">Tipo Doc:</span>
+                                        <input type="text" class="form-control input-lx" id="editarApellidoPaterno" name="editarApellidoPaterno">
+                                        <input type="text" class="form-control input-lx hidden" id="editarIdRegistro" name="editarIdRegistro">
 
-                                <input type="text" class="form-control input-lx" maxlength="15" id="editarTipoDocumento" name="editarDniVisitaFuncionario" readonly>
+                                    </div>
 
+                                </div>
 
-                            </div>
-                        </div>
+                                <!-- ENTRADA PARA NOMBRE FUNCIONARIO -->
 
+                                <div class="form-group col-md-12">
 
+                                    <div class="input-group">
 
-                        <div class="form-group col-md-12">
+                                        <span class="input-group-addon">Apellido Materno:</span>
 
-                            <div class="input-group ">
+                                        <input type="text" class="form-control input-lx" id="editarApellidoMaterno" name="editarApellidoMaterno" placeholder="Apellido Materno" required>
 
-                                <span class="input-group-addon">N° de Documento:</span>
+                                    </div>
 
-                                <input type="text" class="form-control input-lx" maxlength="15" id="editarDniVisitaFuncionario" name="editarDniVisitaFuncionario" readonly>
+                                </div>
 
+                                <!-- ENTRADA PARA CARGO FUNCIONARIO -->
 
-                            </div>
-                        </div>
+                                <div class="form-group col-md-12">
 
-                    </div>
-                    <!-- ENTRADA PARA NOMBRE FUNCIONARIO -->
-                    <div class="fron-row">
+                                    <div class="input-group">
 
-                        <div class="form-group col-md-12">
+                                        <span class="input-group-addon">Nombre:</span>
 
-                            <div class="input-group">
+                                        <input type="text" class="form-control input-lx" id="editarNombre" name="editarNombre" placeholder="Nombres" required>
 
-                                <span class="input-group-addon">Nombre Funcionario:</span>
+                                    </div>
 
-                                <input type="text" class="form-control input-lx" id="editarNombreFuncionario" name="editarNombreFuncionario" readonly>
-                                <input class="hidden" type="text" id="editarIdRegistro" name="editarIdRegistro">
+                                </div>
 
-                            </div>
+                                <!-- ENTRADA PARA COLEGIO REGIONAL -->
 
-                        </div>
+                                <div class="form-group col-md-12">
 
-                        <!-- ENTRADA PARA NOMBRE FUNCIONARIO -->
+                                    <div class="input-group">
 
-                        <div class="form-group col-md-12">
+                                        <span class="input-group-addon">Colegio Regional:</span>
 
-                            <div class="input-group">
+                                        <input type="text" class="form-control input-lx" id="editarColegioRegional" name="editarColegioRegional" required>
 
-                                <span class="input-group-addon">Cargo Funcionario:</span>
+                                    </div>
 
-                                <input type="text" class="form-control input-lx" id="editarCargoFuncionario" name="editarCargoFuncionario" readonly>
+                                </div>
 
-                            </div>
 
-                        </div>
+                                <div class="form-group col-md-12">
 
-                        <!-- ENTRADA PARA CARGO FUNCIONARIO -->
+                                    <div class="input-group">
 
-                        <div class="form-group col-md-12">
+                                        <span class="input-group-addon bord">Estado:</span>
 
-                            <div class="input-group">
+                                        <select class="form-control input-lx" name="editarEstado">
 
-                                <span class="input-group-addon">Entidad:</span>
+                                            <option id="editarEstado"></option>
+                                            <option value="Habilitado">Habilitado</option>
+                                            <option value="No Habilitado">No Habilitado</option>
 
-                                <input type="text" class="form-control input-lx" id="editarEntidadFuncionario" name="editarEntidadFuncionareditar" readonly>
+                                        </select>
+                                    </div>
 
-                            </div>
 
-                        </div>
+                                </div>
 
-                        <!-- ENTRADA PARA USUARIO REGISTRADOR -->
 
-                        <div class="form-group col-md-12">
+                                <div class="form-group col-md-12">
 
-                            <div class="input-group">
+                                    <div class="input-group">
 
-                                <span class="input-group-addon">Digitador:</span>
+                                        <span class="input-group-addon">Post Grado:</span>
 
-                                <input type="text" class="form-control input-lx" id="editarUsuarioDigitador" name="editarUsuarioDigitador" readonly>
+                                        <input type="text" class="form-control input-lx" id="editarPostGrado" name="editarPostGrado" required>
 
-                            </div>
+                                    </div>
 
-                        </div>
+                                </div>
 
-                    </div>
+                                <!-- ENTRADA PARA USUARIO REGISTRADOR -->
 
+                                <div class="form-group col-md-12">
 
-                    <p class="help-block"><strong>FUNCIONARIO DE LA ENTIDAD:</strong></p>
+                                    <div class="input-group">
 
-                    <!-- ENTRADA PARA NOMBRE FUNCIONARIO VISITADO-->
-                    <div class="fron-row">
+                                        <span class="input-group-addon">Digitador:</span>
 
-                        <div class="form-group col-md-12">
+                                        <input type="text" class="form-control input-lx" id="editarUsuarioDigitador" name="editarUsuarioDigitador" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
 
-                            <div class="input-group">
+                                    </div>
 
-                                <span class="input-group-addon">Nombre Funcionario:</span>
+                                </div>
 
-                                <input type="text" class="form-control input-lx" id="editarNombreFuncionarioLocal" name="editarNombreFuncionarioLocal" required>
+                                <!-- ENTRADA PARA SUBIR FOTO -->
 
+                                <div class="form-group">
 
-                            </div>
+                                    <div class="panel">Subir Foto</div>
+                                    <style>
+                                        input {
+                                            border-color: white;
+                                        }
+                                    </style>
+                                    <input type="file" class="nuevaImagen inputfile" name="editarImagen">
 
-                        </div>
 
+                                    <p class="help-block">Peso máximo de la imagen 2MB</p>
 
-
-
-                        <!-- ENTRADA PARA AREA O OFICINA FUNCIONARIO VISITADO-->
-
-                        <div class="form-group col-md-12">
-
-                            <div class="input-group">
-
-                                <span class="input-group-addon">Cargo Funcionario:</span>
-
-                                <input type="text" class="form-control input-lx" id="editarAreaOfFuncionarioLocal" name="editarAreaOfFuncionarioLocal" required>
-
-                            </div>
-
-                        </div>
-
-                        <!-- ENTRADA PARA CARGO EN FUNCIONARIO VISITADO -->
-
-                        <div class="form-group col-md-12">
-
-                            <div class="input-group">
-
-                                <span class="input-group-addon">Entidad:</span>
-
-                                <input type="text" class="form-control input-lx" id="editarCargoFuncionarioLocal" name="editarCargoFuncionarioLocal" required>
+                                    <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+                                    <input type="hidden" name="imagenActual" id="imagenActual">
+                                </div>
 
                             </div>
 
-                        </div>
-
-
-
-                        <p class="help-block"><strong>MOVITO DE LA VISITA:</strong></p>
-                        <!-- ENTRADA PARA MOTIVO DE VISITA DEL FUNCIONARIO A LA ENTIDAD -->
-
-                        <div class="form-group col-md-12">
-
-                            <div class="input-group">
-
-                                <span class="input-group-addon"></span>
-
-                                <input type="text" class="form-control input-lx" id="editarMotivo" name="editarMotivo" required>
-
-                            </div>
 
                         </div>
                     </div>
-                    <!-- ENTRADA PARA FECHA DE REGISTRO -->
-                    <div class="form-row">
-
-                        <p class="help-block"><strong>FECHA DE SALIDA DEL FUNCIONARIO:</strong></p>
-
-                        <div class="form-group col-md-6">
-
-                            <div class="input-group">
-
-                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-
-                                <input type="date" class="form-control input-lx" id="editarFechaSalida" name="editarFechaSalida" required>
-
-                            </div>
-
-
-                        </div>
-
-                        <div class="form-group col-md-6">
-
-                            <div class="input-group" id="datetimepicker3">
-
-                                <input type='text' class="form-control" id="editarHoraSalida" name="editarHoraSalida" />
-
-                                <span class="input-group-addon">
-
-                                    <span class="glyphicon glyphicon-time"></span>
-
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
                 </div>
 
                 <!--=====================================
@@ -504,7 +439,7 @@ MODAL EDITAR REGISTRO
 
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-                    <button type="submit" class="btn btn-primary">Guardar Registro</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #81172d;">Guardar Colegiado</button>
 
                 </div>
 
@@ -525,5 +460,6 @@ MODAL EDITAR REGISTRO
 </div>
 
 <?php
-
+$eliminarRegistro = new ControladorRegistro();
+$eliminarRegistro->ctrEliminarRegistro();
 ?>

@@ -68,8 +68,8 @@ class ControladorRegistro
 
         $ruta = "vistas/img/productos/default/anonymous.png";
 
-        $nombreCarpeta = $_POST["nuevApellidoPaterno"] + " " + $_POST["nuevaApellidoMaterno"] + " " + $_POST["nuevNombre"];
-
+        $nombreCarpeta = "0";
+       /*  var_dump($nombreCarpeta); */
         if (isset($_FILES["nuevaImagen"]["tmp_name"])) {
 
           list($ancho, $alto) = getimagesize($_FILES["nuevaImagen"]["tmp_name"]);
@@ -136,13 +136,14 @@ class ControladorRegistro
         $fechaActual = $fecha . ' ' . $hora;
 
         $tabla = "registro";
-        var_dump($_POST["nuevApellidoPaterno"] + " " + $_POST["nuevaApellidoMaterno"] + " " + $_POST["nuevNombre"]);
+        $datos_completos = $_POST["nuevApellidoPaterno"] . " " . $_POST["nuevApellidoMaterno"] . " " . $_POST["nuevNombre"];
+        var_dump($datos_completos);
         $datos = array(
           "apellido_paterno" => $_POST["nuevApellidoPaterno"],
-          "apellido_materno" => $_POST["nuevaApellidoMaterno"],
+          "apellido_materno" => $_POST["nuevApellidoMaterno"],
           "nombre" => $_POST["nuevNombre"],
 
-          "datos_completos" => $_POST["nuevApellidoPaterno"] + " " + $_POST["nuevaApellidoMaterno"] + " " + $_POST["nuevNombre"],
+          "datos_completos" => $datos_completos,
           "colegio_regional" => $_POST["nuevColegioRegional"],
           "estado" => $_POST["nuevEstado"],
           "post_grado" => $_POST["nuevPostGrado"],
@@ -223,17 +224,97 @@ class ControladorRegistro
 
 
       if ($_POST["editarIdRegistro"]) {
+        /* =============================================
+          VALIDAR IMAGEN
+          ============================================= */
 
+        $ruta = $_POST["imagenActual"];
 
-        $tabla = "Tap_RegistroVisita";
+        $nombreCarpeta = "0";
 
-        $dateformato = new DateTime($_POST["editarFechaSalida"]);
+        if (isset($_FILES["editarImagen"]["tmp_name"]) && !empty($_FILES["editarImagen"]["tmp_name"])) {
+
+          list($ancho, $alto) = getimagesize($_FILES["editarImagen"]["tmp_name"]);
+
+          $nuevoAncho = 500;
+          $nuevoAlto = 500;
+
+          /* =============================================
+              CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
+          ============================================= */
+
+          $directorio = "vistas/img/productos/" . $nombreCarpeta;
+
+          /* =============================================
+           PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
+          ============================================= */
+
+          if (!empty($_POST["imagenActual"]) && $_POST["imagenActual"] != "vistas/img/productos/default/anonymous.png") {
+
+            unlink($_POST["imagenActual"]);
+          } else {
+
+            mkdir($directorio, 0755);
+          }
+
+          /* =============================================
+                                DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+                                ============================================= */
+
+          if ($_FILES["editarImagen"]["type"] == "image/jpeg") {
+
+            /* =============================================
+                                    GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+                                    ============================================= */
+
+            $aleatorio = mt_rand(100, 999);
+
+            $ruta = "vistas/img/productos/" .$nombreCarpeta. "/" . $aleatorio . ".jpg";
+
+            $origen = imagecreatefromjpeg($_FILES["editarImagen"]["tmp_name"]);
+
+            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+            imagejpeg($destino, $ruta);
+          }
+
+          if ($_FILES["editarImagen"]["type"] == "image/png") {
+
+            /* =============================================
+                                    GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+                                    ============================================= */
+
+            $aleatorio = mt_rand(100, 999);
+
+            $ruta = "vistas/img/productos/" . $nombreCarpeta . "/" . $aleatorio . ".png";
+
+            $origen = imagecreatefrompng($_FILES["editarImagen"]["tmp_name"]);
+
+            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+            imagepng($destino, $ruta);
+          }
+        }
+
+        $tabla = "registro";
+
+        $datos_completos = $_POST["editarApellidoPaterno"] . " " . $_POST["editarApellidoMaterno"] . " " . $_POST["editarNombre"];
 
         $datos = array(
 
-          "id" => $_POST["editarIdRegistro"],
-          "fecha_salida" => $dateformato->format('d/m/Y'),
-          "hora_salida" => $_POST["editarHoraSalida"]
+          "cop" => $_POST["editarIdRegistro"],
+          "apellido_paterno" => $_POST["editarApellidoPaterno"],
+          "apellido_materno" => $_POST["editarApellidoMaterno"],
+          "nombre" => $_POST["editarNombre"],
+          "datos_completos" => $datos_completos,
+          "colegio_regional" => $_POST["editarColegioRegional"],
+          "estado" => $_POST["editarEstado"],
+          "post_grado" => $_POST["editarPostGrado"],
+          "imagen" => $ruta
 
         );
 
@@ -308,7 +389,7 @@ class ControladorRegistro
 
     if (isset($_GET["idRegistro"])) {
 
-      $tabla = "Tap_RegistroVisita";
+      $tabla = "registro";
       $datos = $_GET["idRegistro"];
 
       $respuesta = ModeloRegistro::mdlEliminarRegistro($tabla, $datos);

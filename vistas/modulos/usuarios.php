@@ -21,17 +21,22 @@
     <section class="content">
 
         <div class="box">
+            <?php
+            if ($_SESSION["perfil"] !== "Administrador") {
+            } else {
+            ?>
+                <div class="box-header with-border">
 
-            <div class="box-header with-border">
+                    <button class="btn btn-primary" style="background-color: #81172d;" data-toggle="modal" data-target="#modalAgregarUsuario">
 
-                <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">
+                        Agregar usuario
 
-                    Agregar usuario
+                    </button>
 
-                </button>
-
-            </div>
-
+                </div>
+            <?php
+            }
+            ?>
 
             <div class="box-body">
 
@@ -42,8 +47,6 @@
                         <tr>
 
                             <th style="width:10px">#</th>
-                            <th>Tipo Documento</th>
-                            <th>N° Documento</th>
                             <th>Nombre</th>
                             <th>Oficina</th>
                             <th>Area</th>
@@ -56,28 +59,25 @@
                             <th>Perfil</th>
                             <th>Estado</th>
                             <th>Último login</th>
-                            <th>Fecha</th>
                             <th>Acciones</th>
 
                         </tr>
 
                     </thead>
-                    
+
                     <tbody>
 
                         <?php
+                        if ($_SESSION['perfil'] == "Administrador") {
+                            $item = null;
+                            $valor = null;
 
-                        $item = null;
-                        $valor = null;
+                            $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 
-                        $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+                            foreach ($usuarios as $key => $value) {
 
-                        foreach ($usuarios as $key => $value) {
-
-                            echo ' <tr>
+                                echo ' <tr>
                               <td>' . ($key + 1) . '</td>
-                              <td>' . $value["tipo_documento"] . '</td>
-                              <td>' . $value["num_documento"] . '</td>
                               <td>' . $value["nombre"] . '</td>
                               <td>' . $value["oficina"] . '</td>
                               <td>' . $value["area"] . '</td>
@@ -87,42 +87,93 @@
                               <td>' . $value["piso"] . '</td>
                               <td>' . $value["usuario"] . '</td>';
 
-                            if ($value["foto"] != "") {
+                                if ($value["foto"] != "") {
 
-                                echo '<td><img src="' . $value["foto"] . '" class="img-thumbnail" width="40px"></td>';
-                            } else {
+                                    echo '<td><img src="' . $value["foto"] . '" class="img-thumbnail" width="40px"></td>';
+                                } else {
 
-                                echo '<td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                                    echo '<td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                                }
+
+                                echo '<td>' . $value["perfil"] . '</td>';
+
+                                if ($value["estado"] != 0) {
+
+                                    echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="0">Activado</button></td>';
+                                } else {
+
+                                    echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="1">Desactivado</button></td>';
+                                }
+
+                                echo '<td>' . $value["ultimo_login"] . '</td>
+                  <td>
+
+                    <div class="btn-group">
+                        
+                      <button class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+
+                      <button class="btn btn-danger btnEliminarUsuario" idUsuario="' . $value["id"] . '" fotoUsuario="' . $value["foto"] . '" usuario="' . $value["usuario"] . '"><i class="fa fa-times"></i></button>
+
+                    </div>  
+
+                   </td>
+
+                </tr>';
                             }
+                        } else if ($_SESSION["perfil"] == "Informatico" || $_SESSION["perfil"] == "Usuario") {
+                            $item = null;
+                            $item2 = "nombre";
+                            $valor = $_SESSION["nombre"];
 
-                            echo '<td>' . $value["perfil"] . '</td>';
+                            $usuarios = ControladorUsuarios::ctrMostrarUsuariosInformatico($item, $item2, $valor);
 
-                            if ($value["estado"] != 0) {
+                            foreach ($usuarios as $key => $value) {
 
-                                echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="0">Activado</button></td>';
-                            } else {
+                                echo ' <tr>
+                              <td>' . ($key + 1) . '</td>
+                              <td>' . $value["nombre"] . '</td>
+                              <td>' . $value["oficina"] . '</td>
+                              <td>' . $value["area"] . '</td>
+                              <td>' . $value["cargo"] . '</td>
+                              <td>' . $value["cel"] . '</td>
+                              <td>' . $value["sede"] . '</td>
+                              <td>' . $value["piso"] . '</td>
+                              <td>' . $value["usuario"] . '</td>';
 
-                                echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="1">Desactivado</button></td>';
+                                if ($value["foto"] != "") {
+
+                                    echo '<td><img src="' . $value["foto"] . '" class="img-thumbnail" width="40px"></td>';
+                                } else {
+
+                                    echo '<td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                                }
+
+                                echo '<td>' . $value["perfil"] . '</td>';
+
+                                //SE BLOQUEA ESTO PARA QUE EL USUARIO NO PUEDA MANIPULAR 
+                                if ($value["estado"] != 0) {
+
+                                    echo '<td><button class="btn btn-success btn-xs" idUsuario="' . $value["id"] . '" estadoUsuario="0">Activado</button></td>';
+                                } else {
+
+                                    echo '<td><button class="btn btn-danger btn-xs" idUsuario="' . $value["id"] . '" estadoUsuario="1">Desactivado</button></td>';
+                                }
+
+                                echo '<td>' . $value["ultimo_login"] . '</td>
+                               
+                  <td>
+
+                    <div class="btn-group">
+                        
+                      <button class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+
+                    </div>  
+
+                   </td>
+
+                </tr>';
                             }
-
-                            echo '<td>' . $value["ultimo_login"] . '</td>
-                                    <td>' . $value["fecha"] . '</td>
-
-                                <td>
-
-                                    <div class="btn-group">
-                                        
-                                    <button class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
-
-                                    <button class="btn btn-danger btnEliminarUsuario" idUsuario="' . $value["id"] . '" fotoUsuario="' . $value["foto"] . '" usuario="' . $value["usuario"] . '"><i class="fa fa-times"></i></button>
-
-                                    </div>  
-
-                                </td>
-
-                                </tr>';
                         }
-
                         ?>
 
                     </tbody>
@@ -153,7 +204,7 @@ MODAL AGREGAR USUARIO
                 CABEZA DEL MODAL
                 ======================================-->
 
-                <div class="modal-header" style="background:#3c8dbc; color:white">
+                <div class="modal-header" style="background:#81172d; color:white">
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -169,38 +220,7 @@ MODAL AGREGAR USUARIO
 
                     <div class="box-body">
 
-                        <!-- ENTRADA PARA SELECCIONAR DOCUMENTO DEL REGISTRO-->
-
-                        <div class="form-group">
-
-                            <div class="input-group">
-
-                                <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
-                                <select class="form-control input-lx" id="nuevTipoDocumento" name="nuevTipoDocumento" required>
-
-                                    <option value="">Tipo de Documento</option>
-
-                                    <?php
-                                    $item = null;
-                                    $valor = null;
-
-                                    $documento = ControladorDocumento::ctrMostrarDocumento($item, $valor);
-
-                                    foreach ($documento as $key => $value) {
-
-                                        echo '<option value="' . $value["tipo_documento"] . '">' . $value["tipo_documento"] . '</option>';
-                                    }
-                                    ?>
-
-                                </select>
-
-
-                            </div>
-
-                        </div>
-
-                        <!-- ENTRADA PARA NUMERP DE DOCUMENTO (DNI) -->
+                        <!-- ENTRADA PARA DNI -->
 
                         <div class="form-group">
 
@@ -212,7 +232,7 @@ MODAL AGREGAR USUARIO
 
 
                                 <span class="input-group-addon">
-                                    <button type="button" id="consultar" class="btn btn-primary btn-xs consultar">
+                                    <button type="button" style="background-color: #81172d;" id="consultar" class="btn btn-primary btn-xs consultar">
                                         Consultar
                                     </button>
                                 </span>
@@ -228,7 +248,7 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
-                                <input type="text" class="form-control input-lx nuevoNombre" id="nuevNombre" name="nuevNombre" placeholder="Nombres y Apellidos" required>
+                                <input type="text" class="form-control input-lx nuevoNombre" id="nuevoNombre" name="nuevoNombre" placeholder="Nombres y Apellidos" required>
 
                             </div>
 
@@ -241,7 +261,7 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
 
-                                <input type="text" class="form-control input-lx" name="nuevOficina" placeholder="Equipo de trabajo funcional" required>
+                                <input type="text" class="form-control input-lx" name="nuevoOficina" placeholder="Equipo de trabajo funcional" required>
 
                             </div>
 
@@ -253,7 +273,7 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
 
-                                <input type="text" class="form-control input-lx" name="nuevArea" placeholder="Área de trabajo" required>
+                                <input type="text" class="form-control input-lx" name="nuevoArea" placeholder="Área de trabajo" required>
 
                             </div>
 
@@ -265,7 +285,7 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
 
-                                <input type="text" class="form-control input-lx" name="nuevCargo" placeholder="Cargo" required>
+                                <input type="text" class="form-control input-lx" name="nuevoCargo" placeholder="Cargo" required>
 
                             </div>
 
@@ -278,7 +298,7 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
 
-                                <input type="text" class="form-control input-lx celularClase" name="nuevCel" placeholder="Celular" required>
+                                <input type="text" class="form-control input-lx celular" name="nuevoCel" placeholder="Celular" required>
 
                             </div>
 
@@ -293,13 +313,13 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
 
-                                <select class="form-control input-lx" name="nuevSede">
+                                <select class="form-control input-lx" name="nuevoSede">
 
                                     <option value="">Selecionar Sede</option>
 
-                                    <option value="Pinillos">Pinillos</option>
+                                    <option value="Sede1">Sede1</option>
 
-                                    <option value="Fap">Fap</option>
+                                    <option value="Sede2">Sede2</option>
 
                                 </select>
 
@@ -315,7 +335,7 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-angle-double-up"></i></span>
 
-                                <select class="form-control input-lx" name="nuevPiso">
+                                <select class="form-control input-lx" name="nuevoPiso">
 
                                     <option value="">Selecionar piso</option>
 
@@ -339,7 +359,7 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
 
-                                <input type="text" class="form-control input-lx" name="nuevUsuario" placeholder="Ingresar usuario" id="nuevoUsuario" required>
+                                <input type="text" class="form-control input-lx" name="nuevoUsuario" placeholder="Ingresar usuario" id="nuevoUsuario" required>
 
                             </div>
 
@@ -353,7 +373,7 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
 
-                                <input type="password" class="form-control input-lx" name="nuevPassword" placeholder="Ingresar contraseña" required>
+                                <input type="password" class="form-control input-lx" name="nuevoPassword" placeholder="Ingresar contraseña" required>
 
                             </div>
 
@@ -367,46 +387,28 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
 
-                                <select class="form-control input-lx" name="nuevPerfil">
+                                <select class="form-control input-lx" name="nuevoPerfil">
 
                                     <option value="">Selecionar perfil</option>
 
-                                    <?php
-                                    $item = null;
-                                    $valor = null;
+                                    <option value="Usuario">Usuario</option>
 
-                                    $perfil = ControladorPerfil::ctrMostrarPerfil($item, $valor);
+                                    <option value="Informatico">Informatico</option>
 
-                                    foreach ($perfil as $key => $value) {
+                                    <option value="Administrador">Administrador</option>
 
-                                        echo '<option value="' . $value["perfil"] . '">' . $value["perfil"] . '</option>';
-                                    }
-                                    ?>
                                 </select>
-                            </div>
-
-                        </div>
-
-                        <!-- ENTRADA PARA FECHA DE REGISTRO -->
-                        <div class="form-group">
-
-                            <div class="input-group">
-
-                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-
-                                <input type="date" class="form-control input-lx" name="nuevFecha" required>
 
                             </div>
 
                         </div>
-
                         <!-- ENTRADA PARA SUBIR FOTO -->
 
                         <div class="form-group">
 
                             <div class="panel">SUBIR FOTO</div>
 
-                            <input type="file" class="nuevFoto" name="nuevFoto">
+                            <input type="file" class="nuevaFoto" name="nuevaFoto">
 
                             <p class="help-block">Peso máximo de la foto 2MB</p>
 
@@ -426,7 +428,7 @@ MODAL AGREGAR USUARIO
 
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-                    <button type="submit" class="btn btn-primary">Guardar usuario</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #81172d;">Guardar usuario</button>
 
                 </div>
 
@@ -459,7 +461,7 @@ MODAL EDITAR USUARIO
                 CABEZA DEL MODAL
                 ======================================-->
 
-                <div class="modal-header" style="background:#3c8dbc; color:white">
+                <div class="modal-header" style="background:#81172d; color:white">
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -475,35 +477,7 @@ MODAL EDITAR USUARIO
 
                     <div class="box-body">
 
-                        <!-- ENTRADA PARA SELECCIONAR DOCUMENTO DEL REGISTRO-->
 
-                        <div class="form-group">
-
-                            <div class="input-group">
-
-                                <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
-                                <select class="form-control input-lx" name="editarTipoDocumento" required>
-
-                                    <option id="editarTipoDocumento">Tipo de Documento</option>
-
-                                    <?php
-                                    $item = null;
-                                    $valor = null;
-
-                                    $documento = ControladorDocumento::ctrMostrarDocumento($item, $valor);
-
-                                    foreach ($documento as $key => $value) {
-
-                                        echo '<option value="' . $value["tipo_documento"] . '">' . $value["tipo_documento"] . '</option>';
-                                    }
-                                    ?>
-
-                                </select>
-
-                            </div>
-
-                        </div>
                         <!-- ENTRADA PARA DNI -->
 
                         <div class="form-group">
@@ -617,6 +591,7 @@ MODAL EDITAR USUARIO
                                     <option value="" id="editarPiso"></option>
 
                                     <option value="1">1</option>
+
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -643,7 +618,7 @@ MODAL EDITAR USUARIO
 
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
 
-                        <div class="form-group">
+                        <div class="form-group">|
 
                             <div class="input-group">
 
@@ -658,57 +633,56 @@ MODAL EDITAR USUARIO
                         </div>
 
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
+                        <?php if ($_SESSION["perfil"] !== "Administrador") { ?>
+                            <div class="form-group hidden">
 
-                        <div class="form-group">
+                                <div class="input-group">
 
-                            <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
 
-                                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                                    <select class="form-control input-lx" name="editarPerfil">
 
-                                <select class="form-control input-lx" name="editarPerfil">
+                                        <option value="" id="editarPerfil"></option>
+                                        <option value="Usuario">Usuario</option>
 
-                                    <option id="editarPerfil"></option>
-                                    <?php
-                                    $item = null;
-                                    $valor = null;
+                                        <option value="Informatico">Informatico</option>
 
-                                    $perfil = ControladorPerfil::ctrMostrarPerfil($item, $valor);
+                                        <option value="Administrador">Administrador</option>
 
-                                    foreach ($perfil as $key => $value) {
+                                    </select>
 
-                                        echo '<option value="' . $value["perfil"] . '">' . $value["perfil"] . '</option>';
-                                    }
-                                    ?>
-
-                                </select>
+                                </div>
 
                             </div>
+                        <?php } else { ?>
+                            <div class="form-group">
 
-                        </div>
+                                <div class="input-group">
 
+                                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
 
-                        <!-- ENTRADA PARA FECHA DE REGISTRO -->
-                        <div class="form-group">
+                                    <select class="form-control input-lx" name="editarPerfil">
 
-                            <div class="input-group">
+                                        <option value="" id="editarPerfil"></option>
+                                        <option value="Usuario">Usuario</option>
 
-                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                        <option value="Informatico">Informatico</option>
 
-                                <input type="date" class="form-control input-lx" id="editarFecha" name="editarFecha" required>
+                                        <option value="Administrador">Administrador</option>
+
+                                    </select>
+
+                                </div>
 
                             </div>
-
-                        </div>
-
-
-
+                        <?php } ?>
                         <!-- ENTRADA PARA SUBIR FOTO -->
 
                         <div class="form-group">
 
                             <div class="panel">SUBIR FOTO</div>
 
-                            <input type="file" class="nuevFoto" name="editarFoto">
+                            <input type="file" class="nuevaFoto" name="editarFoto">
 
                             <p class="help-block">Peso máximo de la foto 2MB</p>
 
@@ -730,7 +704,7 @@ MODAL EDITAR USUARIO
 
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-                    <button type="submit" class="btn btn-primary">Modificar usuario</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #81172d;">Modificar usuario</button>
 
                 </div>
 

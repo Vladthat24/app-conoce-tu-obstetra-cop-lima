@@ -1,7 +1,7 @@
 /*=============================================
  SUBIENDO LA FOTO DEL USUARIO
  =============================================*/
-$(".nuevFoto").change(function () {
+$(".nuevaFoto").change(function () {
 
     var imagen = this.files[0];
 
@@ -11,7 +11,7 @@ $(".nuevFoto").change(function () {
 
     if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
 
-        $(".nuevFoto").val("");
+        $(".nuevaFoto").val("");
 
         swal({
             title: "Error al subir la imagen",
@@ -22,7 +22,7 @@ $(".nuevFoto").change(function () {
 
     } else if (imagen["size"] > 2000000) {
 
-        $(".nuevFoto").val("");
+        $(".nuevaFoto").val("");
 
         swal({
             title: "Error al subir la imagen",
@@ -68,35 +68,22 @@ $(".tablas").on("click", ".btnEditarUsuario", function () {
         dataType: "json",
         success: function (respuesta) {
 
-
-            console.log(respuesta["fecha"]);
-
-            $("#editarTipoDocumento").val(respuesta["tipo_documento"]);
-            $("#editarTipoDocumento").html(respuesta["tipo_documento"]);
-
-            $("#editarDni").val(respuesta["num_documento"]);
+            $("#editarDni").val(respuesta["dni"]);
             $("#editarNombre").val(respuesta["nombre"]);
             $("#editarOficina").val(respuesta["oficina"]);
             $("#editarArea").val(respuesta["area"]);
             $("#editarCargo").val(respuesta["cargo"]);
             $("#editarCel").val(respuesta["cel"]);
-
             $("#editarSede").html(respuesta["sede"]);
             $("#editarSede").val(respuesta["sede"]);
-
             $("#editarPiso").html(respuesta["piso"]);
             $("#editarPiso").val(respuesta["piso"]);
-
+            $("#editarUsuario").val(respuesta["usuario"]);
             $("#editarPerfil").html(respuesta["perfil"]);
             $("#editarPerfil").val(respuesta["perfil"]);
-
-            $("#editarUsuario").val(respuesta["usuario"]);
-
             $("#fotoActual").val(respuesta["foto"]);
 
             $("#passwordActual").val(respuesta["password"]);
-            
-            $("#editarFecha").val(respuesta["fecha"]);
 
             if (respuesta["foto"] != "") {
 
@@ -176,7 +163,7 @@ $(".tablas").on("click", ".btnActivar", function () {
  REVISAR SI EL USUARIO YA ESTÁ REGISTRADO
  =============================================*/
 
-$("#nuevUsuario").change(function () {
+$("#nuevoUsuario").change(function () {
 
     $(".alert").remove();
 
@@ -197,9 +184,9 @@ $("#nuevUsuario").change(function () {
 
             if (respuesta) {
 
-                $("#nuevUsuario").parent().after('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>');
+                $("#nuevoUsuario").parent().after('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>');
 
-                $("#nuevUsuario").val("");
+                $("#nuevoUsuario").val("");
 
             }
 
@@ -211,11 +198,11 @@ $("#nuevUsuario").change(function () {
 /*=============================================
  REVISAR SI EL DNI DEL USUARIO YA ESTÁ REGISTRADO
  =============================================*/
-$("#num_documentoAtributo").change(function () {
+$("#dni").change(function () {
     //$('#consultar').on('click', function () {
     $(".alert").remove();
 
-    var dni = $('#num_documentoAtributo').val();
+    var dni = $('#dni').val();
     var datos = new FormData();
     datos.append("validarDni", dni);
 
@@ -231,10 +218,10 @@ $("#num_documentoAtributo").change(function () {
 
             if (respuesta) {
 
-                $("#num_documentoAtributo").parent().after('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>');
+                $("#dni").parent().after('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>');
 
-                $("#num_documentoAtributo").val("");
-                $("#nuevNombre").html("");
+                $("#dni").val("");
+                $("#nuevoNombre").html("");
 
             }
 
@@ -242,6 +229,20 @@ $("#num_documentoAtributo").change(function () {
 
     })
 });
+
+
+
+//$.ajax({
+//
+//    url: "ajax/usuarios.ajax.php",
+//    success: function (respuesta) {
+//        console.log("respuesta", respuesta);
+//
+//    }
+//
+//});
+
+
 
 
 /*=============================================
@@ -277,7 +278,7 @@ $(".tablas").on("click", ".btnEliminarUsuario", function () {
  VALIDAR SOLO NUMERO EN DNI
  =============================================*/
 $(function () {
-    $(".num_documentoClase").keydown(function (event) {
+    $(".dni").keydown(function (event) {
         //alert(event.keyCode);
         if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode !== 190 && event.keyCode !== 110 && event.keyCode !== 8 && event.keyCode !== 9) {
             return false;
@@ -289,12 +290,13 @@ $(function () {
  =============================================*/
 //SOLO NUMEROS
 $(function () {
-    $(".celularClase").keydown(function (event) {
+    $(".celular").keydown(function (event) {
         //alert(event.keyCode);
         if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode !== 190 && event.keyCode !== 110 && event.keyCode !== 8 && event.keyCode !== 9) {
             return false;
         }
     });
 });
+
 
 

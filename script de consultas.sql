@@ -2,7 +2,13 @@ SELECT cop,apellido_paterno,
 		apellido_materno,nombre,
 		datos_completos,colegio_regional,
 		estado,post_grado,imagen,fecha 
-FROM dbobstetras.registro where cop='' or apellido_paterno='' or apellido_materno='' or nombre='GRACIELA';
+FROM dbobstetras.registro where cop='' 
+or apellido_paterno ='CHAVEZ' 
+or apellido_materno ='TERRONES'
+or datos_completos='CHAVEZ TERRORES%' 
+or nombre='';
+
+
 WHERE cop LIKE '11%'
   OR apellido_paterno LIKE 'FARFAN%' 
   OR apellido_materno LIKE 'FERREYRA%'

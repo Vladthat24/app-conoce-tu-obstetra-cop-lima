@@ -1062,23 +1062,23 @@
             color: #555;
         }
     </style>
-    <link rel='stylesheet' id='youtube-channel-gallery-css' href='http://colegiodeobstetras.pe/wp-content/plugins/youtube-channel-gallery/styles.css?ver=5.3.4' type='text/css' media='all' />
-    <link rel='stylesheet' id='jquery.magnific-popup-css' href='http://colegiodeobstetras.pe/wp-content/plugins/youtube-channel-gallery/magnific-popup.css?ver=5.3.4' type='text/css' media='all' />
-    <link rel='stylesheet' id='easy-social-share-buttons-css' href='http://colegiodeobstetras.pe/wp-content/plugins/easy-social-share-buttons3/assets/css/tiny-retina/easy-social-share-buttons.css?ver=3.4.1.1' type='text/css' media='all' />
-    <link rel='stylesheet' id='easy-social-share-buttons-mailform-css' href='http://colegiodeobstetras.pe/wp-content/plugins/easy-social-share-buttons3/assets/css/essb-mailform.css?ver=3.4.1.1' type='text/css' media='all' />
-    <link rel='stylesheet' id='essb-cct-style-css' href='http://colegiodeobstetras.pe/wp-content/plugins/easy-social-share-buttons3/lib/modules/click-to-tweet/assets/css/styles.css?ver=3.4.1.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='youtube-channel-gallery-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/styles.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='jquery.magnific-popup-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/magnific-popup.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='easy-social-share-buttons-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/easy-social-share-buttons.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='easy-social-share-buttons-mailform-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/essb-mailform.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='essb-cct-style-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/styles2.css' type='text/css' media='all' />
     <!--[if lt IE 9]>
 <link rel='stylesheet' id='vc_lte_ie9-css'  href='http://colegiodeobstetras.pe/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css?ver=6.0.2' type='text/css' media='screen' />
 <![endif]-->
-    <link rel='stylesheet' id='js_composer_front-css' href='http://colegiodeobstetras.pe/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=6.0.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='js_composer_front-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/js_composer.min.css?ver=6.0.2' type='text/css' media='all' />
     <link rel='stylesheet' id='bfa-font-awesome-css' href='//cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
     <!--     <link rel='stylesheet' id='gg_fontawesome-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/css/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' /> -->
-    <link rel='stylesheet' id='gg-frontend-css-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/css/frontend.min.css?ver=6.531' type='text/css' media='all' />
-    <link rel='stylesheet' id='gg-slider-css-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/js/jquery.galleria/themes/ggallery/galleria.ggallery_minimal.css?ver=6.531' type='text/css' media='all' />
-    <link rel='stylesheet' id='gg-custom-css-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/css/custom.css?ver=6.531' type='text/css' media='all' />
-    <script type='text/javascript' src='http://colegiodeobstetras.pe/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
-    <script type='text/javascript' src='http://colegiodeobstetras.pe/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
-    <script type='text/javascript' src='http://colegiodeobstetras.pe/wp-content/plugins/wen-logo-slider/vendors/slick-carousel/slick.min.js?ver=1.3.2'></script>
+    <link rel='stylesheet' id='gg-frontend-css-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/frontend.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='gg-slider-css-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/galleria.ggallery_minimal.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='gg-custom-css-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/custom.css' type='text/css' media='all' />
+    <script type='text/javascript' src='vistas/bower_components/datospaginaobstetras/segundaparte/jquery.js?ver=1.12.4-wp'></script>
+    <script type='text/javascript' src='vistas/bower_components/datospaginaobstetras/segundaparte/jquery-migrate.min.js'></script>
+    <script type='text/javascript' src='vistas/bower_components/datospaginaobstetras/segundaparte/slick.min.js'></script>
     <link rel='https://api.w.org/' href='http://colegiodeobstetras.pe/wp-json/' />
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://colegiodeobstetras.pe/xmlrpc.php?rsd" />
     <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://colegiodeobstetras.pe/wp-includes/wlwmanifest.xml" />
@@ -1337,7 +1337,7 @@
                         <a href="http://colegiodeobstetras.pe/"><img alt="theme-logo-alt" src="http://colegiodeobstetras.pe/wp-content/uploads/logo_blanco_obstetras_iam_gif.gif" /></a>
                     </header>
                 </div>
-                <!-- 
+
                 <div class="site-top-container clearfix">
 
                     <div class="site-logo-left-handler"></div>
@@ -1452,7 +1452,7 @@
                             <div class="top-extra-inner clearfix"></div>
                         </div>
                     </div>
-                </div> -->
+                </div>
 
 
             </div>
@@ -1553,7 +1553,7 @@
                                                                                         left: 5%;
                                                                                     }
                                                                                 </style>
-                                                                                <div class="form-group  col-lg-3 col-md-6">
+                                                                                <div class="form-group col-lg-3 col-md-6">
 
                                                                                     <div class="input-group">
 
@@ -1565,7 +1565,6 @@
 
 
                                                                                 </div>
-
 
                                                                                 <div class="form-group  col-lg-3 col-md-6">
 
@@ -1601,20 +1600,58 @@
 
                                                                                     </div>
                                                                                 </div>
+
+                                                                                <div class="form-group  col-lg-12 col-md-6">
+
+                                                                                    <div class="input-group">
+                                                                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                                        <img src="vistas/bower_components/captcha/captcha.php"><input type="text" name="captcha">
+
+                                                                                    </div>
+
+                                                                                    <!--                                                                                     <div class="captcha-box">
+                                                                                        <canvas id="canvas" style="width: 150px;border-top: black;"></canvas>
+                                                                                        <h2>Type The Code:</h2>
+                                                                                        <input name="code" class="form-control">
+                                                                                        <button id="valid" class="btn btn-danger mt-3">Test</button>
+                                                                                    </div> -->
+                                                                                </div>
+                                                                                <script>
+                                                                                    /*                                                                                     // step-1
+                                                                                    const captcha = new Captcha($('#canvas'), {
+                                                                                        length: 4
+                                                                                    });
+
+                                                                                    // api
+                                                                                    //captcha.refresh();
+                                                                                    //captcha.getCode();
+                                                                                    //captcha.valid("");
+                                                                                    $(document).ready(function() {
+
+
+                                                                                        $('#valid').on('click', function() {
+                                                                                            const ans = captcha.valid($('input[name="code"]').val());
+                                                                                            alert(ans);
+
+                                                                                        })
+
+                                                                                        //alert(ans);
+
+                                                                                        //captcha.getCode();
+                                                                                    }) */
+                                                                                </script>
                                                                                 <br>
                                                                                 <br>
                                                                                 <br>
+
                                                                                 <div style="text-align:center;">
                                                                                     <button style="top:50%;left:50%;background-color: #81172d;" class="btn btn-danger btn-lg" name="consultaobstetra">
-                                                                                        <span class="glyphicon glyphicon-search">BUSCAR</span>
+                                                                                        <span class="glyphicon glyphicon-search valid">BUSCAR</span>
+                                                                                    </button>
+                                                                                    <button style="top:50%;left:50%;background-color: #81172d;" class="btn btn-danger btn-lg">
+                                                                                        <span class="glyphicon glyphicon-refresh"></span>
                                                                                     </button>
                                                                                 </div>
-                                                                                <!-- <button class="btn btn-primary" name="consultaobstetra">
-
-                                                                                    <span class="glyphicon glyphicon-search"></span>
-
-                                                                                </button> -->
-
                                                                             </form>
 
 
@@ -1646,13 +1683,23 @@
                                                                         <tbody>
                                                                             <?php
 
-                                                                            if (isset($_POST['consultaobstetra'])) {
+                                                                            if (isset($_POST['consultaobstetra']) && isset($_COOKIE['captcha']) && $_COOKIE['captcha'] == 'yes') {
 
 
                                                                                 $valor1 = $_POST["nuev_num_colegiatura"];
                                                                                 $valor2 = $_POST["nuevApellido_paterno"];
                                                                                 $valor3 = $_POST["nuevApellido_materno"];
-                                                                                $valor4 = $_POST["nuevNombre"];
+
+                                                                                $captcha_cookie = $_COOKIE['captcha'];
+                                                                                $captcha_user = $_POST['captcha'];
+
+                                                                                if ($captcha_cookie == sha1($captcha_user)) {
+                                                                                    echo "Captcha Correcto";
+                                                                                } else {
+                                                                                    echo "Captcha Incorrecto";
+                                                                                }
+
+
                                                                                 if (empty($valor1) && empty($valor2) && empty($valor3) && empty($valo4)) {
                                                                                     echo '<script>
              
@@ -1758,8 +1805,8 @@
                                                                                                 <div class="form-group col-md-7">
 
                                                                                                     <div class="" style="padding: 20px;">
-                                                                                                        <label for="label">Apellido Paterno:</label>
-                                                                                                        <h3 style="text-align: center;" id="editarApellidoPaterno"></h3>
+                                                                                                        <label for="label" style="color: #054168;">Apellido Paterno:</label>
+                                                                                                        <h3 id="editarApellidoPaterno"></h3>
                                                                                                         <!-- <input type="text" class="form-control input-lx" name="editarApellidoPaterno"> -->
                                                                                                         <input type="text" class="form-control input-lx hidden" id="editarIdRegistro" name="editarIdRegistro">
 
@@ -1768,9 +1815,9 @@
                                                                                                     <div class="" style="padding: 20px;">
 
 
-                                                                                                        <label for="label">Apellido Materno:</label>
+                                                                                                        <label for="label" style="color: #054168;"> Apellido Materno:</label>
                                                                                                         <!-- <input type="text" class="form-control input-lx" id="editarApellidoMaterno" name="editarApellidoMaterno" placeholder="Apellido Materno" required> -->
-                                                                                                        <h3 style="text-align: center;" id="editarApellidoMaterno"></h3>
+                                                                                                        <h3 id="editarApellidoMaterno"></h3>
                                                                                                     </div>
 
                                                                                                 </div>
@@ -1780,9 +1827,9 @@
                                                                                                 <div class="form-group col-md-6" style="padding: 5px;">
                                                                                                     <hr style="background-color: black;">
                                                                                                     <div class="">
-                                                                                                        <label for="label">Nombre:</label>
+                                                                                                        <label for="label" style="color: #054168;"> Nombre:</label>
                                                                                                         <!-- <span class="input-group-addon">Nombre:</span> -->
-                                                                                                        <h4 id="editarNombre"></h4>
+                                                                                                        <h3 id="editarNombre"></h3>
                                                                                                         <!-- <input type="text" class="form-control input-lx" id="editarNombre" name="editarNombre" placeholder="Nombres" required> -->
 
                                                                                                     </div>
@@ -1794,9 +1841,9 @@
                                                                                                 <div class="form-group col-md-6" style="padding: 5px;">
                                                                                                     <hr style="background-color: black;">
                                                                                                     <div class="">
-                                                                                                        <label for="label">Colegio Regional:</label>
+                                                                                                        <label for="label" style="color: #054168;">Colegio Regional:</label>
                                                                                                         <!-- <span class="input-group-addon">Colegio Regional:</span> -->
-                                                                                                        <h4 id="editarColegioRegional"></h4>
+                                                                                                        <h3 id="editarColegioRegional"></h3>
                                                                                                         <!-- <input type="text" class="form-control input-lx" id="editarColegioRegional" name="editarColegioRegional" required> -->
 
                                                                                                     </div>
@@ -1808,8 +1855,8 @@
                                                                                                     <hr style="background-color: black;">
                                                                                                     <div class="">
 
-                                                                                                        <label for="label">Estado:</label>
-                                                                                                        <h4 id="editarEstado"></h4>
+                                                                                                        <label for="label" style="color: #054168;">Estado:</label>
+                                                                                                        <h3 id="editarEstado"></h3>
                                                                                                         <!-- <input type="text" class="form-control input-lx" id="editarEstado" required> -->
 
                                                                                                     </div>
@@ -1821,9 +1868,9 @@
                                                                                                 <div class="form-group col-md-6" style="padding: 5px;">
                                                                                                     <hr style="background-color: black;">
                                                                                                     <div class="">
-                                                                                                        <label for="label">Post Grado:</label>
+                                                                                                        <label for="label" style="color: #054168;">Post Grado:</label>
                                                                                                         <!-- <span class="input-group-addon">Post Grado:</span> -->
-                                                                                                        <h4 id="editarPostGrado"></h4>
+                                                                                                        <h3 id="editarPostGrado"></h3>
                                                                                                         <!-- <input type="text" class="form-control input-lx" id="editarPostGrado" name="editarPostGrado" required> -->
 
                                                                                                     </div>
@@ -1837,6 +1884,11 @@
                                                                                     </div>
                                                                                 </div>
 
+                                                                                <div class="modal-footer" style="background:#81172d;">
+
+                                                                                    <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Salir</button>
+
+                                                                                </div>
                                                                             </form>
 
 

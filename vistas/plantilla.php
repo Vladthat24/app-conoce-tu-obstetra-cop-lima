@@ -114,7 +114,10 @@
 
   <!-- select 2-->
   <script src="vistas/bower_components/select2/dist/js/select2.js"></script>
-
+  
+  <!-- Captcha-->
+  <script src="vistas/bower_components/captcha/jquery-captcha-lgh.js"></script>
+  <script src="vistas/bower_components/captcha/jquery-captcha-lgh.min.js"></script>
 </head>
 
 <!--=====================================
@@ -195,6 +198,7 @@
   } else {
 
     include "modulos/consulta.php";
+    include "modulos/captcha.php";
   }
 
 

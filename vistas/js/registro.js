@@ -4,6 +4,9 @@ LLAMAR AL DNI QUE ESTA ALMACENADO EN EL LOCALSTRORE
  =============================================*/
 $(document).ready(function () {
 
+    $(".actualizar").click(function () {
+        window.location = "consulta";
+    })
     /* 
         var dni = localStorage.getItem("dniLocalStore");
         $("#nuevDniVisitaFuncionario").val(dni);
@@ -11,6 +14,23 @@ $(document).ready(function () {
         $("#nuevEntidadSelectSearch").select2(); */
 
 })
+
+/* $(".button").click(function (e) {
+    e.preventDefault();
+    var data = $("#frm").serialize();
+    console.log(data);
+    $.ajax({
+        url:"consultar"
+    })
+
+}) */
+
+
+
+
+
+
+
 /*=============================================
 ALMACENAR EL DNI EN EL LOCALSTRORE
  =============================================*/
@@ -417,7 +437,7 @@ $(".tablas tbody").on("click", "button.btnVerConsulta", function () {
             $('#editarEstado').html(respuesta["estado"]);
             $('#editarPostGrado').val(respuesta["post_grado"]);
             $('#editarPostGrado').html(respuesta["post_grado"]);
-            
+
 
             if (respuesta["imagen"] != "") {
 

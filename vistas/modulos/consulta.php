@@ -1548,14 +1548,14 @@
                                                                             <form class="form-inline" method="POST" action="">
                                                                                 <style>
                                                                                     .col-md-6 {
-                                                                                        margin-top: 20px;
+                                                                                        /*                                                                                         margin-top: 20px;
                                                                                         top: 5%;
-                                                                                        left: 5%;
+                                                                                        left: 5%; */
                                                                                     }
                                                                                 </style>
-                                                                                <div class="form-group col-lg-3 col-md-6">
+                                                                                <div class="form-group col-sm-2 col-md-3 col-lg-2 mt-3 mb-3 border">
 
-                                                                                    <div class="input-group">
+                                                                                    <div class="input-group input-group-sm mb-3">
 
                                                                                         <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
 
@@ -1566,9 +1566,9 @@
 
                                                                                 </div>
 
-                                                                                <div class="form-group  col-lg-3 col-md-6">
+                                                                                <div class="form-group col-sm-2 col-md-3 col-lg-2 mt-3 mb-3 border">
 
-                                                                                    <div class="input-group">
+                                                                                    <div class="input-group input-group-sm mb-3">
 
                                                                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
@@ -1578,9 +1578,9 @@
 
                                                                                 </div>
 
-                                                                                <div class="form-group  col-lg-3 col-md-6">
+                                                                                <div class="form-group  col-sm-2 col-md-3 col-lg-2 mt-3 mb-3 border">
 
-                                                                                    <div class="input-group">
+                                                                                    <div class="input-group input-group-sm mb-3">
 
                                                                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
@@ -1590,9 +1590,9 @@
 
                                                                                 </div>
 
-                                                                                <div class="form-group  col-lg-3 col-md-6">
+                                                                                <div class="form-group  col-sm-2 col-md-3 col-lg-2 mt-3 mb-3 border">
 
-                                                                                    <div class="input-group">
+                                                                                    <div class="input-group input-group-sm mb-3">
 
                                                                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
@@ -1601,57 +1601,29 @@
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="form-group  col-lg-12 col-md-6">
+                                                                                <div class="form-group  col-sm-2 col-md-3 col-lg-4 mt-3 mb-3 border">
 
-                                                                                    <div class="input-group">
-                                                                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                                        <img src="vistas/bower_components/captcha/captcha.php"><input type="text" name="captcha">
-
+                                                                                    <div class="input-group input-group-sm mb-3">
+                                                                                        <!-- <span class="input-group-addon"> <img src="vistas/bower_components/captcha/captcha.php" style="width: 150px;"></span> -->
+                                                                                        <input type="text" name="captcha" style="width: 100px;">
+                                                                                        <span class="input-group-addon" style="width: 150px;padding-block: 0px;"> <img src="vistas/bower_components/captcha/captcha.php"></span>
                                                                                     </div>
 
-                                                                                    <!--                                                                                     <div class="captcha-box">
-                                                                                        <canvas id="canvas" style="width: 150px;border-top: black;"></canvas>
-                                                                                        <h2>Type The Code:</h2>
-                                                                                        <input name="code" class="form-control">
-                                                                                        <button id="valid" class="btn btn-danger mt-3">Test</button>
-                                                                                    </div> -->
                                                                                 </div>
-                                                                                <script>
-                                                                                    /*                                                                                     // step-1
-                                                                                    const captcha = new Captcha($('#canvas'), {
-                                                                                        length: 4
-                                                                                    });
 
-                                                                                    // api
-                                                                                    //captcha.refresh();
-                                                                                    //captcha.getCode();
-                                                                                    //captcha.valid("");
-                                                                                    $(document).ready(function() {
-
-
-                                                                                        $('#valid').on('click', function() {
-                                                                                            const ans = captcha.valid($('input[name="code"]').val());
-                                                                                            alert(ans);
-
-                                                                                        })
-
-                                                                                        //alert(ans);
-
-                                                                                        //captcha.getCode();
-                                                                                    }) */
-                                                                                </script>
                                                                                 <br>
                                                                                 <br>
                                                                                 <br>
 
                                                                                 <div style="text-align:center;">
                                                                                     <button style="top:50%;left:50%;background-color: #81172d;" class="btn btn-danger btn-lg" name="consultaobstetra">
-                                                                                        <span class="glyphicon glyphicon-search valid">BUSCAR</span>
+                                                                                        <span class="glyphicon glyphicon-search ">BUSCAR</span>
                                                                                     </button>
-                                                                                    <button style="top:50%;left:50%;background-color: #81172d;" class="btn btn-danger btn-lg">
+                                                                                    <a style="top:50%;left:50%;background-color: #81172d;" class="btn btn-danger btn-lg actualizar">
                                                                                         <span class="glyphicon glyphicon-refresh"></span>
-                                                                                    </button>
+                                                                                    </a>
                                                                                 </div>
+
                                                                             </form>
 
 
@@ -1683,29 +1655,108 @@
                                                                         <tbody>
                                                                             <?php
 
-                                                                            if (isset($_POST['consultaobstetra']) && isset($_COOKIE['captcha']) && $_COOKIE['captcha'] == 'yes') {
+                                                                            if (isset($_SESSION['captcha_code']) && isset($_POST["captcha"])) {
+
+                                                                                $code = $_SESSION['captcha_code'];
+                                                                                $input = $_POST["captcha"];
+
+                                                                                if ($code == sha1($input)) {
+                                                                                    echo "CODIGO CORRECTO";
+
+                                                                                    if (isset($_POST['consultaobstetra'])) {
 
 
-                                                                                $valor1 = $_POST["nuev_num_colegiatura"];
-                                                                                $valor2 = $_POST["nuevApellido_paterno"];
-                                                                                $valor3 = $_POST["nuevApellido_materno"];
+                                                                                        $valor1 = $_POST["nuev_num_colegiatura"];
+                                                                                        $valor2 = $_POST["nuevApellido_paterno"];
+                                                                                        $valor3 = $_POST["nuevApellido_materno"];
+                                                                                        $valor4 = $_POST["nuevNombre"];
 
-                                                                                $captcha_cookie = $_COOKIE['captcha'];
-                                                                                $captcha_user = $_POST['captcha'];
+                                                                                        $valorDescrip = $valor2 . " " . $valor3 . " " . $valor4;
 
-                                                                                if ($captcha_cookie == sha1($captcha_user)) {
-                                                                                    echo "Captcha Correcto";
+                                                                                        /*                                                                                 
+                                                                                        $captcha_cookie = $_COOKIE['captcha'];
+                                                                                        $captcha_user = $_POST['captcha'];
+        
+                                                                                        if ($captcha_cookie == sha1($captcha_user)) {
+                                                                                            echo "Captcha Correcto";
+                                                                                        } else {
+                                                                                            echo "Captcha Incorrecto";
+                                                                                        } */
+
+
+                                                                                        if (empty($valor1) && empty($valor2) && empty($valor3) && empty($valo4)) {
+                                                                                            echo '<script>
+                     
+                                                                                            swal({
+                                                                                                type: "success",
+                                                                                                title: "Ingrese Datos",
+                                                                                                showConfirmButton: true,
+                                                                                                confirmButtonText: "Cerrar"
+                                                                                                }).then((result) => {
+                                                                                                    if (result.value) {
+                                                                                
+                                                                                                    window.location = "consulta";
+                                                                                
+                                                                                                    }
+                                                                                                  })
+                                                                                
+                                                                                            </script>';
+                                                                                        } else {
+
+
+                                                                                            $item1 = "cop";
+                                                                                            $item2 = "apellido_paterno";
+                                                                                            $item3 = "apellido_materno";
+                                                                                            $item4 = "nombre";
+                                                                                            $itemDescrip = "datos_completos";
+
+                                                                                            if (!empty($valorDescrip)) {
+                                                                                                /* var_dump($valorDescrip); */
+                                                                                                $registro = ControladorRegistro::ctrMostrarConsultaDescrip($itemDescrip, $valorDescrip);
+                                                                                            } else {
+
+                                                                                                $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
+                                                                                            }
+
+
+                                                                                            /* var_dump($valor1,$valor2,$valor3,$valor4); */
+                                                                                            /* $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4); */
+                                                                                            /* var_dump($registro); */
+                                                                                            foreach ($registro as $key => $value) {
+
+                                                                                                echo ' <tr>
+                                                                                                    <td>' . ($key + 1) . '</td>
+                                                                                                    <td>
+        
+                                                                                                        <div class="btn-group">
+                                                                                                                            
+                                                                                                            <button class="btn btn-warning btnVerConsulta" idRegistro="' . $value["cop"] . '" data-toggle="modal" data-target="#modalVerConsulta"><i class="fa fa-eye"></i></button>
+        
+                                                                                                        </div>  
+                                                                                    
+                                                                                                    </td>
+        
+                                                                                                                        
+                                                                                                                    
+                                                                                                     <td>' . $value["datos_completos"] . '</td>
+                                                                                                     <td>' . $value["cop"] . '</td>
+                                                                                                     <td>' . $value["colegio_regional"] . '</td>
+                                                                                                     <td>' . $value["estado"] . '</td>
+                                                                                                     <td>' . $value["post_grado"] . '</td>
+                                                                                                        
+                                                                                                </tr>';
+                                                                                            }
+                                                                                        }
+                                                                                    } else {
+                                                                                    }
                                                                                 } else {
-                                                                                    echo "Captcha Incorrecto";
-                                                                                }
 
 
-                                                                                if (empty($valor1) && empty($valor2) && empty($valor3) && empty($valo4)) {
                                                                                     echo '<script>
-             
+                     
                                                                                     swal({
                                                                                         type: "success",
-                                                                                        title: "Ingrese Datos",
+                                                                                        title: "Captcha Incorrecto",
                                                                                         showConfirmButton: true,
                                                                                         confirmButtonText: "Cerrar"
                                                                                         }).then((result) => {
@@ -1717,44 +1768,8 @@
                                                                                           })
                                                                         
                                                                                     </script>';
-                                                                                } else {
-
-                                                                                    $item1 = "cop";
-                                                                                    $item2 = "apellido_paterno";
-                                                                                    $item3 = "apellido_materno";
-                                                                                    $item4 = "nombre";
-
-                                                                                    /* var_dump($valor1,$valor2,$valor3,$valor4); */
-                                                                                    $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
-                                                                                    /* var_dump($registro); */
-                                                                                    foreach ($registro as $key => $value) {
-
-                                                                                        echo ' <tr>
-                                                                                                                <td>' . ($key + 1) . '</td>
-                                                                                                                <td>
-
-                                                                                                                    <div class="btn-group">
-                                                                                                                    
-                                                                                                                        <button class="btn btn-warning btnVerConsulta" idRegistro="' . $value["cop"] . '" data-toggle="modal" data-target="#modalVerConsulta"><i class="fa fa-eye"></i></button>
-
-                                                                                                                    </div>  
-                                                                            
-                                                                                                                </td>
-
-                                                                                                                
-                                                                                                            
-                                                                                                                <td>' . $value["datos_completos"] . '</td>
-                                                                                                                <td>' . $value["cop"] . '</td>
-                                                                                                                <td>' . $value["colegio_regional"] . '</td>
-                                                                                                                <td>' . $value["estado"] . '</td>
-                                                                                                                <td>' . $value["post_grado"] . '</td>
-                                                                                                
-                                                                                                </tr>';
-                                                                                    }
                                                                                 }
-                                                                            } else {
                                                                             }
-
                                                                             ?>
                                                                         </tbody>
 

@@ -17,6 +17,16 @@ class ControladorRegistro
     return $respuesta;
   }
 
+  static public function ctrMostrarConsultaDescrip($item1, $valor1)
+  {
+
+    $tabla = "registro";
+    $item = null;
+    $respuesta = ModeloRegistro::mdlMostrarConsultaDescrip($tabla, $item, $item1, $valor1);
+
+    return $respuesta;
+  }
+
 
   /*=============================================
 	RANGO FECHAS

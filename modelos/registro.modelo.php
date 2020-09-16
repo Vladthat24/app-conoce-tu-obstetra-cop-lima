@@ -32,6 +32,28 @@ class ModeloRegistro
 
         $stmt = null;
     }
+    static public function mdlMostrarConsultaDescrip($tabla, $item, $item1, $valor1)
+    {
+        //CAPTURAR DATOS PARA EL EDIT EN EL FORMULARIO
+        if ($item != null) {
+        } else {
+
+            $stmt = Conexion::conectar()->prepare("SELECT LPAD(cop,5,'0') as cop,
+            datos_completos,colegio_regional,
+            estado,post_grado FROM $tabla WHERE $item1 like ':$item1%'");
+
+            $stmt->bindParam(":" . $item1, $valor1, PDO::PARAM_STR);
+
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+
+        $stmt->close();
+
+        $stmt = null;
+    }
 
     /* =============================================
       MOSTRAR RANGOS DE FECHA
@@ -280,7 +302,6 @@ class ModeloRegistro
     {
         //CAPTURAR DATOS PARA EL EDIT EN EL FORMULARIO
         if ($item != null) {
-
         } else {
 
             $stmt = Conexion::conectar()->prepare("SELECT count(*) AS CANTIDAD FROM $tabla");
@@ -294,8 +315,4 @@ class ModeloRegistro
 
         $stmt = null;
     }
-
-
-
-
 }

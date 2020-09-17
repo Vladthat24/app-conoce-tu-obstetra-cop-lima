@@ -1655,119 +1655,99 @@
                                                                         <tbody>
                                                                             <?php
 
-                                                                            if (isset($_SESSION['captcha_code']) && isset($_POST["captcha"])) {
+                                                                            if (isset($_SESSION["captcha_code"]) && isset($_POST["captcha"]) && isset($_POST["consultaobstetra"])) {
 
-                                                                                $code = $_SESSION['captcha_code'];
+                                                                                $code = $_SESSION["captcha_code"];
                                                                                 $input = $_POST["captcha"];
 
-                                                                                if ($code == sha1($input)) {
-                                                                                    echo "CODIGO CORRECTO";
+                                                                                $valor1 = $_POST["nuev_num_colegiatura"];
+                                                                                $valor2 = $_POST["nuevApellido_paterno"];
+                                                                                $valor3 = $_POST["nuevApellido_materno"];
+                                                                                $valor4 = $_POST["nuevNombre"];
 
-                                                                                    if (isset($_POST['consultaobstetra'])) {
-
-
-                                                                                        $valor1 = $_POST["nuev_num_colegiatura"];
-                                                                                        $valor2 = $_POST["nuevApellido_paterno"];
-                                                                                        $valor3 = $_POST["nuevApellido_materno"];
-                                                                                        $valor4 = $_POST["nuevNombre"];
-
-                                                                                        $valorDescrip = $valor2 . " " . $valor3 . " " . $valor4;
-
-                                                                                        /*                                                                                 
-                                                                                        $captcha_cookie = $_COOKIE['captcha'];
-                                                                                        $captcha_user = $_POST['captcha'];
-        
-                                                                                        if ($captcha_cookie == sha1($captcha_user)) {
-                                                                                            echo "Captcha Correcto";
-                                                                                        } else {
-                                                                                            echo "Captcha Incorrecto";
-                                                                                        } */
-
-
-                                                                                        if (empty($valor1) && empty($valor2) && empty($valor3) && empty($valo4)) {
-                                                                                            echo '<script>
-                     
-                                                                                            swal({
-                                                                                                type: "success",
-                                                                                                title: "Ingrese Datos",
-                                                                                                showConfirmButton: true,
-                                                                                                confirmButtonText: "Cerrar"
-                                                                                                }).then((result) => {
-                                                                                                    if (result.value) {
-                                                                                
-                                                                                                    window.location = "consulta";
-                                                                                
-                                                                                                    }
-                                                                                                  })
-                                                                                
-                                                                                            </script>';
-                                                                                        } else {
-
-
-                                                                                            $item1 = "cop";
-                                                                                            $item2 = "apellido_paterno";
-                                                                                            $item3 = "apellido_materno";
-                                                                                            $item4 = "nombre";
-                                                                                            $itemDescrip = "datos_completos";
-
-                                                                                            if (!empty($valorDescrip)) {
-                                                                                                /* var_dump($valorDescrip); */
-                                                                                                $registro = ControladorRegistro::ctrMostrarConsultaDescrip($itemDescrip, $valorDescrip);
-                                                                                            } else {
-
-                                                                                                $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
-                                                                                            }
-
-
-                                                                                            /* var_dump($valor1,$valor2,$valor3,$valor4); */
-                                                                                            /* $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4); */
-                                                                                            /* var_dump($registro); */
-                                                                                            foreach ($registro as $key => $value) {
-
-                                                                                                echo ' <tr>
-                                                                                                    <td>' . ($key + 1) . '</td>
-                                                                                                    <td>
-        
-                                                                                                        <div class="btn-group">
-                                                                                                                            
-                                                                                                            <button class="btn btn-warning btnVerConsulta" idRegistro="' . $value["cop"] . '" data-toggle="modal" data-target="#modalVerConsulta"><i class="fa fa-eye"></i></button>
-        
-                                                                                                        </div>  
-                                                                                    
-                                                                                                    </td>
-        
-                                                                                                                        
-                                                                                                                    
-                                                                                                     <td>' . $value["datos_completos"] . '</td>
-                                                                                                     <td>' . $value["cop"] . '</td>
-                                                                                                     <td>' . $value["colegio_regional"] . '</td>
-                                                                                                     <td>' . $value["estado"] . '</td>
-                                                                                                     <td>' . $value["post_grado"] . '</td>
-                                                                                                        
-                                                                                                </tr>';
-                                                                                            }
-                                                                                        }
-                                                                                    } else {
-                                                                                    }
-                                                                                } else {
-
+                                                                                if (empty($valor1) && empty($valor2) && empty($valor3) && empty($valor4)) {
 
                                                                                     echo '<script>
-                     
+
                                                                                     swal({
                                                                                         type: "success",
-                                                                                        title: "Captcha Incorrecto",
+                                                                                        title: "Ingresar Datos",
                                                                                         showConfirmButton: true,
                                                                                         confirmButtonText: "Cerrar"
                                                                                         }).then((result) => {
                                                                                             if (result.value) {
-                                                                        
+
                                                                                             window.location = "consulta";
-                                                                        
+
                                                                                             }
-                                                                                          })
-                                                                        
+                                                                                        })
+
                                                                                     </script>';
+                                                                                } else {
+
+                                                                                    if ($code == sha1($input)) {
+                                                                                        $item1 = "cop";
+                                                                                        $item2 = "apellido_paterno";
+                                                                                        $item3 = "apellido_materno";
+                                                                                        $item4 = "nombre";
+                                                                                        $itemDescrip = "datos_completos";
+
+                                                                                        if (!empty($valor2) && !empty($valor3)) {
+/*                                                                                             var_dump($valor2 . " " . $valor3 . " " . $valor4);
+                                                                                            echo "SE INGRESO AP AM Y SI QUIERE EL NOMBRE"; */
+                                                                                            $datosCompletos = $valor2 . " " . $valor3 . " " . $valor4;
+                                                                                            $registro = ControladorRegistro::ctrMostrarConsultaDescrip($datosCompletos);
+                                                                                        } else {
+/*                                                                                             var_dump($valor1 . "" . $valor2 . "" . $valor3 . "" . $valor4);
+                                                                                            echo "VALORES INDIVIDUAL"; */
+                                                                                            $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
+                                                                                        }
+
+
+
+                                                                                        foreach ($registro as $key => $value) {
+
+                                                                                            echo ' <tr>
+                                                                                                <td>' . ($key + 1) . '</td>
+                                                                                                <td>
+                                                                        
+                                                                                                    <div class="btn-group">
+                                                                                                                        
+                                                                                                        <button class="btn btn-warning btnVerConsulta" idRegistro="' . $value["cop"] . '" data-toggle="modal" data-target="#modalVerConsulta"><i class="fa fa-eye"></i></button>
+                                                                        
+                                                                                                    </div>  
+                                                                                
+                                                                                                </td>
+                                                                        
+                                                                                                                    
+                                                                                                                
+                                                                                                 <td>' . $value["datos_completos"] . '</td>
+                                                                                                 <td>' . $value["cop"] . '</td>
+                                                                                                 <td>' . $value["colegio_regional"] . '</td>
+                                                                                                 <td>' . $value["estado"] . '</td>
+                                                                                                 <td>' . $value["post_grado"] . '</td>
+                                                                                                    
+                                                                                            </tr>';
+                                                                                        }
+                                                                                    } else {
+
+                                                                                        echo '<script>
+
+                                                                                        swal({
+                                                                                            type: "success",
+                                                                                            title: "Captcha Incorrecto",
+                                                                                            showConfirmButton: true,
+                                                                                            confirmButtonText: "Cerrar"
+                                                                                            }).then((result) => {
+                                                                                                if (result.value) {
+                                                                                
+                                                                                                window.location = "consulta";
+                                                                                
+                                                                                                }
+                                                                                            })
+                                                                                
+                                                                                        </script>';
+                                                                                    }
                                                                                 }
                                                                             }
                                                                             ?>

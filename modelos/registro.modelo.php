@@ -32,7 +32,7 @@ class ModeloRegistro
 
         $stmt = null;
     }
-    static public function mdlMostrarConsultaDescrip($tabla, $item, $item1, $valor1)
+    static public function mdlMostrarConsultaDescrip($tabla, $item,$valor1)
     {
         //CAPTURAR DATOS PARA EL EDIT EN EL FORMULARIO
         if ($item != null) {
@@ -40,10 +40,7 @@ class ModeloRegistro
 
             $stmt = Conexion::conectar()->prepare("SELECT LPAD(cop,5,'0') as cop,
             datos_completos,colegio_regional,
-            estado,post_grado FROM $tabla WHERE $item1 like ':$item1%'");
-
-            $stmt->bindParam(":" . $item1, $valor1, PDO::PARAM_STR);
-
+            estado,post_grado FROM $tabla WHERE datos_completos like '$valor1%'");
 
             $stmt->execute();
 

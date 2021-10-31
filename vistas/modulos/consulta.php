@@ -1046,11 +1046,6 @@
             color: #ffffff;
         }
 
-        /*         .wp-block-table td,
-        .wp-block-separator {
-            border-color: #ffffff;
-        } */
-
         .wp-block-media-text {
             color: #000;
         }
@@ -1067,12 +1062,10 @@
     <link rel='stylesheet' id='easy-social-share-buttons-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/easy-social-share-buttons.css' type='text/css' media='all' />
     <link rel='stylesheet' id='easy-social-share-buttons-mailform-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/essb-mailform.css' type='text/css' media='all' />
     <link rel='stylesheet' id='essb-cct-style-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/styles2.css' type='text/css' media='all' />
-    <!--[if lt IE 9]>
-<link rel='stylesheet' id='vc_lte_ie9-css'  href='http://colegiodeobstetras.pe/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css?ver=6.0.2' type='text/css' media='screen' />
-<![endif]-->
+
     <link rel='stylesheet' id='js_composer_front-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/js_composer.min.css?ver=6.0.2' type='text/css' media='all' />
     <link rel='stylesheet' id='bfa-font-awesome-css' href='//cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
-    <!--     <link rel='stylesheet' id='gg_fontawesome-css' href='http://colegiodeobstetras.pe/wp-content/plugins/global-gallery/css/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' /> -->
+
     <link rel='stylesheet' id='gg-frontend-css-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/frontend.min.css' type='text/css' media='all' />
     <link rel='stylesheet' id='gg-slider-css-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/galleria.ggallery_minimal.css' type='text/css' media='all' />
     <link rel='stylesheet' id='gg-custom-css-css' href='vistas/bower_components/datospaginaobstetras/segundaparte/custom.css' type='text/css' media='all' />
@@ -1222,30 +1215,24 @@
             }
         </style>
     </noscript>
-    <!-- START - Open Graph and Twitter Card Tags 3.0.0 -->
-    <!-- Facebook Open Graph -->
+
     <meta property="og:locale" content="es_ES" />
     <meta property="og:site_name" content="Colegio de Obstetras del Perú" />
     <meta property="og:title" content="Buscar" />
     <meta property="og:url" content="http://colegiodeobstetras.pe/buscar/" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="Buscar" />
-    <!-- Google+ / Schema.org -->
+
     <meta itemprop="name" content="Buscar" />
     <meta itemprop="headline" content="Buscar" />
     <meta itemprop="description" content="Buscar" />
     <meta itemprop="author" content="Colegio de Obstetras del Perú" />
-    <!--<meta itemprop="publisher" content="Colegio de Obstetras del Perú"/>-->
-    <!-- To solve: The attribute publisher.itemtype has an invalid value -->
-    <!-- Twitter Cards -->
+
     <meta name="twitter:title" content="Buscar" />
     <meta name="twitter:url" content="http://colegiodeobstetras.pe/buscar/" />
     <meta name="twitter:description" content="Buscar" />
     <meta name="twitter:card" content="summary_large_image" />
-    <!-- SEO -->
-    <!-- Misc. tags -->
-    <!-- is_singular -->
-    <!-- END - Open Graph and Twitter Card Tags 3.0.0 -->
+
 
 
 </head>
@@ -1605,8 +1592,12 @@
 
                                                                                     <div class="input-group input-group-sm mb-3">
                                                                                         <!-- <span class="input-group-addon"> <img src="vistas/bower_components/captcha/captcha.php" style="width: 150px;"></span> -->
-                                                                                        <input type="text" name="captcha" style="width: 100px;">
-                                                                                        <span class="input-group-addon" style="width: 150px;padding-block: 0px;"> <img src="vistas/bower_components/captcha/captcha.php"></span>
+                                                                                        <span class="input-group" style="width: 160px;">
+                                                                                            <img src="vistas/bower_components/captcha/captcha.php" alt="">
+                                                                                        </span>
+                                                                                        <input type="text" name="captcha" style="width: 105px;" class="form-control input-lx" placeholder="Ingrese Codigo">
+                                                                                        <!--                                                                                    <input type="text" name="captcha" style="width: 100px;">
+                                                                                        <span class="input-group-addon" style="width: 150px;padding-block: 0px;"> <img src="vistas/bower_components/captcha/captcha.php"></span> -->
                                                                                     </div>
 
                                                                                 </div>
@@ -1693,12 +1684,12 @@
                                                                                         $itemDescrip = "datos_completos";
 
                                                                                         if (!empty($valor2) && !empty($valor3)) {
-/*                                                                                             var_dump($valor2 . " " . $valor3 . " " . $valor4);
+                                                                                            /*                                                                                             var_dump($valor2 . " " . $valor3 . " " . $valor4);
                                                                                             echo "SE INGRESO AP AM Y SI QUIERE EL NOMBRE"; */
                                                                                             $datosCompletos = $valor2 . " " . $valor3 . " " . $valor4;
                                                                                             $registro = ControladorRegistro::ctrMostrarConsultaDescrip($datosCompletos);
                                                                                         } else {
-/*                                                                                             var_dump($valor1 . "" . $valor2 . "" . $valor3 . "" . $valor4);
+                                                                                            /*                                                                                             var_dump($valor1 . "" . $valor2 . "" . $valor3 . "" . $valor4);
                                                                                             echo "VALORES INDIVIDUAL"; */
                                                                                             $registro = ControladorRegistro::ctrMostrarConsulta($item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
                                                                                         }
@@ -2009,7 +2000,8 @@
                                                     <div class="wpb_wrapper">
                                                         <p><a href="http://www.iartmedia.com" target="_blank" rel="noopener noreferrer"><img class="aligncenter wp-image-6407 size-full" src="http://colegiodeobstetras.pe/wp-content/uploads/logo_iam_footer.png" alt="" width="80" height="60" /></a></p>
                                                         <div style="text-align: center;"><a class="link_2" href="mailto:info@iartmedia.com"><strong>info@iartmedia.com</strong></a><br />
-                                                            <strong><a href="http://www.IArtMedia.com" target="_blank" rel="noopener noreferrer">www.IArtMedia.com</a></strong></div>
+                                                            <strong><a href="http://www.IArtMedia.com" target="_blank" rel="noopener noreferrer">www.IArtMedia.com</a></strong>
+                                                        </div>
 
                                                     </div>
                                                 </div>

@@ -344,14 +344,14 @@ MODAL AGREGAR USUARIO
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
-                                    <option value="4(Palomar N°1)">4(Palomar N°1)</option>
-                                    <option value="5(Palomar N°2)">5(Palomar N°2)</option>
+
 
                                 </select>
                             </div>
                         </div>
 
                         <!-- ENTRADA PARA EL USUARIO -->
+
 
                         <div class="form-group">
 
@@ -373,7 +373,7 @@ MODAL AGREGAR USUARIO
 
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
 
-                                <input type="password" class="form-control input-lx" name="nuevoPassword" placeholder="Ingresar contraseña" required>
+                                <input style="max-width: 100%;" type="password" class="form-control input-lx" name="nuevoPassword" placeholder="Ingresar contraseña" required>
 
                             </div>
 

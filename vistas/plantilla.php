@@ -201,12 +201,7 @@
     include "modulos/captcha.php";
   }
 
-
-
-
-
-
-  ?>
+?>
 
 
   <script src="vistas/js/plantilla.js"></script>

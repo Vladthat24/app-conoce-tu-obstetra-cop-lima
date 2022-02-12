@@ -4,7 +4,7 @@ EDITAR CLIENTE
 $(".tablas").on("click", ".btnEditarCliente", function(){
 
 	var idCliente = $(this).attr("idCliente");
-
+  
 	var datos = new FormData();
     datos.append("idCliente", idCliente);
 
